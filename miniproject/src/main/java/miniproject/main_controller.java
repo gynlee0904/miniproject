@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class main_controller {
 
+	@GetMapping("/realty/login.do")
+	public void login() {}
 	
 	
 }
