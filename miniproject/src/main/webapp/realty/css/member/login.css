@@ -21,10 +21,18 @@
 	text-align: center;
 }
 .login_pg > div:nth-of-type(1) {
-	background: url(../ico/email.svg) no-repeat 600px 15px / 24px 24px;
+	background: url("../../ico/email.svg"); 
+	background-repeat: no-repeat;
+	background-position: 600px 15px;
+	background-size : 24px 24px;
+	cursor: default;
 }
 .login_pg > div:nth-of-type(2) {
-	background: url(../ico/password.svg) no-repeat 600px 25px /24px 24px;
+	background: url("../../ico/password.svg"); 
+	background-repeat : no-repeat;
+	background-position : 600px 25px;
+	background-size : 24px 24px;
+	cursor: pointer;
 }
 .login_pg > div:nth-of-type(4) {
 	margin-bottom: 200px;
@@ -34,6 +42,8 @@
 	height: 50px;
 	background-color: transparent;
 	border: 1px solid #ccc;
+	padding-left : 15px;
+
 }
 .login_pg > div > input[type="password"] {
 	margin: 10px 0 20px;
@@ -43,12 +53,13 @@
 	color: #ffffff;
 	text-align: center;
 }
-.login_pg > div > input::placeholder {
-	padding-left: 10px;
-}
+/* .login_pg > div > input::placeholder { */
+/* 	padding-left: 10px; */
+/* } */
 .login_pg > div > span {
 	position: relative;
 	color: #999999;
+	cursor: pointer;
 }
 .login_pg > div > span:nth-of-type(1) {
 	margin-right: 30px;

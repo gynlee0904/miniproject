@@ -9,7 +9,7 @@
 <nav>
 	<div class="menus">
 		<ul class="menus_ul">
-			<li><img src="./logo/e_click_logo.png"></li>
+			<li><a href="./index.do" class="home"><img src="./logo/e_click_logo.png"></a></li>
 			<li><a href="#">일반매물</a></li>
 			<li><a href="#">추천매물</a></li>
 			<li><a href="#">중계의뢰</a></li>
