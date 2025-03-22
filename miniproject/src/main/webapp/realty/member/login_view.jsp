@@ -14,11 +14,11 @@
 			<input type="button" value="로그인" onclick="logincheck();">
 		</div>
 		<div>
-			<span>이메일 찾기</span> 
-			<span>비밀번호 찾기</span>
+			<span class="find">이메일 찾기</span> 
+			<span class="find">비밀번호 찾기</span>
 		</div>
 	</aside>
 </form>
 </main>
 
-<script src="./js/member/login.js?v=1"></script>
+<script src="../../realty/js/member/login.js?v=1"></script>

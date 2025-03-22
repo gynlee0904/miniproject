@@ -10,7 +10,7 @@
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
-<%@ include file="./top.jsp" %>
+<%@ include file="../realty/common/top.jsp" %>
 
 <!-- 메인부분 -->
 <main>
@@ -24,6 +24,6 @@
 	<%@ include file="./mdchoice.jsp" %>
 </main>
 <!-- 푸터부분 -->
-<%@ include file="./copyright.jsp" %>
+<%@ include file="../realty/common/copyright.jsp" %>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <footer>
 	<div class="copyright">
 		<ol>
-			<li><img src="./logo/e_click_logo.png" class="logos"></li>
+			<li><img src="../../realty/logo/e_click_logo.png" class="logos"></li>
 			<li>
 				<ul>
 					<li>회사소개</li>

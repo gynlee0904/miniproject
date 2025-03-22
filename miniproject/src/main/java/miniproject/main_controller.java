@@ -10,7 +10,7 @@ public class main_controller {
 	@GetMapping("/realty/index.do")
 	public void index() {}
 	
-	@GetMapping("/realty/login.do")
+	@GetMapping("/realty/member/login.do")
 	public void login() {}
 	
 	
