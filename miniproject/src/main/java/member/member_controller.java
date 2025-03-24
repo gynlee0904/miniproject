@@ -18,12 +18,12 @@ public class member_controller {
 	@PostMapping("/realty/member/member_ok.do")
 	public String macbook_ok(member_DTO m_dto, Model m) throws Exception {
 		int result = this.m_dao.member_join(m_dto);  //dto에 세팅된 값 전달 
-//		String answer = "";
-//		if(result>0) {
-//			answer="alert('회원가입이 완료되었습니다');"
-//					+"location.href='./realty/index.do';";
-//		}
-//		m.addAttribute("answer",answer);
+		String answer = "";
+		if(result>0) {
+			answer="alert('회원가입이 완료되었습니다. 로그인해주세요!');"
+					+"location.href='./login.do';";
+		}
+		m.addAttribute("answer",answer);
 		
 		return "/realty/msg";
 	}

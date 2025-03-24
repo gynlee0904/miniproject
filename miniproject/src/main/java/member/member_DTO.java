@@ -11,7 +11,7 @@ import lombok.Setter;
 public class member_DTO {
 	int midx;
 	String m_email, m_pass, m_name, m_phone;
-	String m_agr1,m_agr2,m_agr3,m_agr4 ;
+	String[] m_agr;
 	String insert_date, modified_date; 
 
 }

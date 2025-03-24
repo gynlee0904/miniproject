@@ -32,22 +32,22 @@
 
 		<div class="bottom">
 			<div class="box1">
-				<input type="checkbox" name="m_agr1" onclick="agree_ck();">
+				<input type="checkbox" name="m_agr" onclick="agree_ck();">
 				<a class="a1">(필수) <span>만 14세 이상입니다.</span></a>
 			</div>
 			<div class="box2">
-				<input type="checkbox" name="m_agr2" onclick="agree_ck();">
+				<input type="checkbox" name="m_agr" onclick="agree_ck();">
 				<a class="a2">(필수) <span><u>이용약관</u>에 동의</span></a>
 			</div>
 			<div class="box3">
-				<input type="checkbox" name="m_agr3" onclick="agree_ck();">
+				<input type="checkbox" name="m_agr" onclick="agree_ck();">
 				<a class="a3">(필수) <span><u>개인정보 수집 및 이용</u>에 동의</span></a>
 			</div>
 			
 			<section class="text1" id="agree1"></section>
 			
 			<div class="box4">
-				<input type="checkbox" name="m_agr4" onclick="agree_ck();">
+				<input type="checkbox" name="m_agr" onclick="agree_ck();">
 				<span>(선택) 마케팅 수신에 동의</span>
 			</div>
 			
@@ -59,4 +59,4 @@
 		</div>
 	</form>
 </main>
-<script src="../js/member/member_join.js?v=1"></script>
+<script src="../js/member/member_join.js?v=2"></script>

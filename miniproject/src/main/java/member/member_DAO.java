@@ -13,9 +13,8 @@ public class member_DAO {
 	
 	public int member_join(member_DTO m_dto) {
 		System.out.println(m_dto.m_email);
-//		int result = this.st.insert("member_insert",m_dto);
-//		return result;
-		return 0;
+		int result = this.st.insert("member_insert",m_dto);
+		return result;
 	}
 	
 }
