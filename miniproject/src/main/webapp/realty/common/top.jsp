@@ -19,7 +19,7 @@
 			<li class="logins">
 				<!-- 홍길동님 환영합니다.[로그아웃] --> 
 				<span title="로그인"><a href="../../realty/member/login.do"><img src="../../realty/ico/login.svg"></a></span> 
-	        	<span title="회원가입"><a href="#"><img src="../../realty/ico/membership.svg"></a></span>
+	        	<span title="회원가입"><a href="../../realty/member/member_join.do"><img src="../../realty/ico/membership.svg"></a></span>
 			</li>
 		</ul>
 	</div>

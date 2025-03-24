@@ -13,6 +13,11 @@ public class main_controller {
 	@GetMapping("/realty/member/login.do")
 	public void login() {}
 	
+	@GetMapping("/realty/member/member_join.do")
+	public void member_join() {}
+	
+	
+	
 	
 }
 
