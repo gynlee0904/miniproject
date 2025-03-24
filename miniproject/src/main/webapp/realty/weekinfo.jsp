@@ -8,7 +8,8 @@
 		</p>
 		<div class="week_estates">
 			<ul>
-				<li><span>매매</span>
+				<li>
+					<span>매매</span>
 					<div>LH센트럴힐(공공임대)</div>
 					<aside>송파구 문정동</aside> 
 					<span>아파트 | 공공임대</span> 

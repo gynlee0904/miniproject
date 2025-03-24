@@ -9,7 +9,7 @@
 <nav>
 	<div class="menus">
 		<ul class="menus_ul">
-			<li><img src="./logo/e_click_logo.png"></li>
+			<li><a href="../../realty/index.do" class="home"><img src="../../realty/logo/e_click_logo.png"></a></li>
 			<li><a href="#">일반매물</a></li>
 			<li><a href="#">추천매물</a></li>
 			<li><a href="#">중계의뢰</a></li>
@@ -18,8 +18,8 @@
 			<li><a href="#">의뢰현황</a></li>
 			<li class="logins">
 				<!-- 홍길동님 환영합니다.[로그아웃] --> 
-				<span title="로그인"><a href="./login.do"><img src="./ico/login.svg"></a></span> 
-	        	<span title="회원가입"><a href="#"><img src="./ico/membership.svg"></a></span>
+				<span title="로그인"><a href="../../realty/member/login.do"><img src="../../realty/ico/login.svg"></a></span> 
+	        	<span title="회원가입"><a href="#"><img src="../../realty/ico/membership.svg"></a></span>
 			</li>
 		</ul>
 	</div>

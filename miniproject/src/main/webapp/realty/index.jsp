@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>온라인 부동산 중개</title>
-  <link rel="stylesheet" type="text/css" href="./css/index.css?v=7">
+  <link rel="stylesheet" type="text/css" href="./css/index.css?v=8">
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
-<%@ include file="./top.jsp" %>
+<%@ include file="../realty/common/top.jsp" %>
 
 <!-- 메인부분 -->
 <main>
@@ -24,6 +24,6 @@
 	<%@ include file="./mdchoice.jsp" %>
 </main>
 <!-- 푸터부분 -->
-<%@ include file="./copyright.jsp" %>
+<%@ include file="../realty/common/copyright.jsp" %>
 </body>
 </html>

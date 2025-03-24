@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" type="text/css" href="./css/index.css?v=1">
-<link rel="stylesheet" type="text/css" href="./css/member/login.css?v=2">
+<link rel="stylesheet" type="text/css" href="../../realty/css/index.css?v=2">
+<link rel="stylesheet" type="text/css" href="../../realty/css/member/login.css?v=4">
 <style>
 .box {
    width: 800px;
@@ -19,12 +19,12 @@
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
-<%@ include file="./top.jsp" %>
+<%@ include file="../../realty/common/top.jsp" %>
 
 <!-- 메인부분 -->
 <%@ include file="./login_view.jsp" %>
 
 <!-- 푸터부분 -->
-<%@ include file="./copyright.jsp" %>
+<%@ include file="../../realty/common/copyright.jsp" %>
 </body>
 </html>

@@ -138,7 +138,7 @@ main > section:nth-of-type(4) {
   width: 200px;
   text-align: left;
 }
-.menus_ul > li:nth-of-type(1) > img{
+.menus_ul > li:nth-of-type(1) > a > img{
   height: inherit;
   object-fit:contain;
 }
