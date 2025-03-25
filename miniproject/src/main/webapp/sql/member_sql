@@ -1,7 +1,7 @@
 create table member (
 	midx int unsigned auto_increment comment '자동증가값',
 	m_email char(100) not null comment '가입이메일',
-	m_pass varchar(20) not null comment '비밀번호',
+	m_pass varchar(50) not null comment '비밀번호',
 	m_name char(30) not null comment '이름',
 	m_phone char(11) comment '연락처',
 	m_agr1 enum('Y','N') not null default 'Y' comment '약관동의_14세이상',
@@ -16,26 +16,14 @@ create table member (
 );
 
 
-create table member (
-	midx int unsigned auto_increment comment '자동증가값',
-	m_email char(100) not null comment '가입이메일',
-	m_pass varchar(20) not null comment '비밀번호',
-	m_name char(30) not null comment '이름',
-	m_phone char(11) comment '연락처',
-	m_agr varchar(20) not null comment '약관동의',
-	insert_date timestamp not null default current_timestamp comment '가입일',
-	modyfied_date timestamp null default null comment '최종수정일',
-	primary key(midx),
-	unique mem(m_email),
-	unique mpn(m_phone)
-);
+
 
 alter table member change modyfied_date modified_date timestamp;
 alter table member drop column m_agr1;
 alter table member drop column m_agr2;
 alter table member drop column m_agr3;
 alter table member drop column m_agr4;
-alter table member modify m_agr1 varchar(20);
+alter table member modify m_pass varchar(50);
 
 show tables;
 select * from member;

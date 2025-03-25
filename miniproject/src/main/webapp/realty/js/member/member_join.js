@@ -12,6 +12,7 @@ window.onload=function(){
 	document.getElementById("agree2").innerHTML = http2.response;
 }
 
+
 var ob =  f.m_agr; //name이 m_agr인 체크박스
 var ea = ob.length;  //name이 m_agr인 박스 전체 개수
 
@@ -38,6 +39,7 @@ function agree_ck(){
 	}
 }
 
+
 function email_ck(){
 	
 	alert("ss")
@@ -49,44 +51,70 @@ var pw_ck = document.getElementById("m_pass_ck");
 var mname = f.m_name;
 var phone = f.m_phone;
 var m_agr = f.m_agr;
-var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣0-9.-]+\.[a-zA-Zㄱ-힣]{2,}$/;
-var reg_pw = / /; 
-var reg_nm = / /; 
-var reg_pn = / /; 
+var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣]+\.[a-zA-Z]{2,}$/;
+var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{10,16}$/; 
+var reg_nm = /^[가-힣a-zA-Z]+$/; 
+var reg_pn = /^\d{10,11}$/; 
 
 function member_join(){
 	if(email.value==""){
-		alert("가입할 이메일을 입력해주세요");
+		alert("가입할 이메일을 입력해주세요.");
 		email.focus();
 	}
-	else if(reg_eml.test(email.value)==false){
-		alert("이메일을 정확하게 입력해주세요");
-		pw.focus();
+	else if(!reg_eml.test(email.value)){
+		alert("이메일을 정확하게 입력해주세요.");
+		email.focus();
 	}
 	else if(pw.value==""){
-		alert("패스워드를 입력해주세요");
+		alert("패스워드를 입력해주세요.");
+		pw.focus();
+	}
+	else if(!reg_pw.test(pw.value)){
+		alert("패스워드를 형식에 맞게 입력해주세요. \n 10~16자(영문,숫자,특수 문자 조합)");
 		pw.focus();
 	}
 	else if(pw_ck.value==""){
-		alert("패스워드를 다시한번 입력해주세요");
+		alert("패스워드를 다시한번 입력해주세요.");
 		pw_ck.focus();
 	}
 	else if(pw.value!=pw_ck.value){
-		alert("패스워드가 맞지 않습니다");
+		alert("패스워드가 맞지 않습니다.");
 		pw_ck.focus();
 	}
 	else if(mname.value==""){
-		alert("이름을 입력해주세요");
+		alert("이름을 입력해주세요.");
+		mname.focus();
+	}
+	else if(!reg_nm.test(mname.value)){
+		alert("이름을 다시한번 확인해주세요.");
 		mname.focus();
 	}
 	else if(phone.value==""){
-		alert("연락처를 입력해주세요");
+		alert("연락처를 입력해주세요.");
 		phone.focus();
 	}
-	else if(m_agr[0].checked==false || m_agr[1].checked==false || m_agr[2].checked==false ){
-		alert("필수사항에 모두 동의하셔야 합니다");
+	else if(!reg_pn.test(phone.value)){
+		alert("연락처를 다시 확인해주세요 \n 숫자만 입력해야합니다.");
+		phone.focus();
 	}
+//	else if(m_agr[0].checked==false || m_agr[1].checked==false || m_agr[2].checked==false ){
+//		alert("필수사항에 모두 동의하셔야 합니다");
+//	}
 	else {
-		f.submit();
+		var requiredIndexes = [0, 1, 2];
+		var allChecked = true;
+        for (var i = 0; i < requiredIndexes.length; i++) {
+            if (!m_agr[requiredIndexes[i]].checked) {
+                allChecked = false;
+                break;
+            }
+        }
+        if (!allChecked) {
+            alert("필수사항에 모두 동의하셔야 합니다");
+        } else {
+//            alert("통과!");
+			f.action="./member_ok.do";
+			f.submit();
+        }
 	}
 }

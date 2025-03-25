@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.member_mapper">
+ 
+<!-- 회원가입 -->
+<insert id="member_insert" >
+	insert into member values ('0',#{m_email},#{m_pass},#{m_name},#{m_phone},#{m_agr1},#{m_agr2},#{m_agr3},#{m_agr4},now(),null)
+</insert>
+
+<!-- 로그인 -->
+<select id="member_login" resultType="member_dto" parameterType="Map">
+	select m_email, m_name from member where m_email=#{m_email} and m_pass=#{m_pass}
+</select>
+
+</mapper>
+
