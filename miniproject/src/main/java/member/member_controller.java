@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,23 +27,16 @@ public class member_controller extends m_encry{
 	String msg = "";
 	
 	//회원가입 메소드 
-	@PostMapping("/realty/member/member_ok.do")
+	@PostMapping("/member/member_ok.do")
 	public String member_ok(member_DTO m_dto, 
-								@RequestParam(defaultValue="N", required=false) String[]m_agr,
+								String[]m_agr,
 								Model m) throws Exception {
 
-		String[] m_agr_ea = new String[]{"N", "N", "N", "N"};
-		if (m_agr != null) {
-			for (int i = 0; i < m_agr.length && i < 4; i++) {
-				m_agr_ea[i] = m_agr[i]; // 체크된 값만 반영
-			}
-		}
-		
-		m_dto.setM_agr1(m_agr_ea[0]);
-		m_dto.setM_agr2(m_agr_ea[1]);
-		m_dto.setM_agr3(m_agr_ea[2]);
-		m_dto.setM_agr4(m_agr_ea[3]);
-		
+		m_dto.setM_agr1(m_agr[0]);
+		m_dto.setM_agr2(m_agr[1]);
+		m_dto.setM_agr3(m_agr[2]);
+		if(m_agr.length==3) { m_dto.setM_agr4("N"); }
+
 		String enc_pw = this.md5_make(m_dto.m_pass);
 		m_dto.setM_pass(enc_pw);
 		
@@ -54,45 +48,127 @@ public class member_controller extends m_encry{
 		}
 		m.addAttribute("msg",this.msg);
 		
-		return "/realty/alert_msg";
+		return "/common/alert_msg";
 	}
 	
+	
 	//로그인 메소드 
-	@PostMapping("/realty/member/login_ok.do")
+	@PostMapping("/member/login_ok.do")
 	public String login_ok(member_DTO m_dto, HttpServletRequest req, Model m) throws Exception {
-		HttpSession se = null;
+		HttpSession session = null;
 		
-		String mid = m_dto.m_email;
-		String mpw = m_dto.m_pass;
+		String mid = m_dto.m_email;  //사용자 입력 id
+		String mpw = m_dto.m_pass;  //사용자 입력 pw
 		
 		String enc_pw = this.md5_make(mpw);
 		m_dto.setM_pass(enc_pw);
 		
 		member_DTO loginMember = this.m_dao.member_login(m_dto); 
+		//loginMember는 db에 저장되어있는 값임. 
 		
-		
-		//로그인 후 회원정보 세션에 저장 
-		if(loginMember!= null && mid.equals(loginMember.m_email) && mpw.equals(loginMember.m_pass)) {  
-			String mname = loginMember.m_name;
+		if(loginMember == null){  //아이디 및 패스워드가 틀릴경우 	
 			
-			se = req.getSession();
+			this.msg="alert('로그인에 실패했습니다.\\n아이디 및 패스워드를 다시 확인하세요!'); "
+					+ "history.go(-1);";
+		}
+		else {    //로그인 후 회원정보 세션에 저장 
+//			if(mid.equals(loginMember.m_email) && enc_pw.equals(loginMember.m_pass)) {  //=> where조건이 하나만 있을떄 사용 
+			String mname = loginMember.m_name;		
+			String mphone = loginMember.m_phone;
 
-			se.setAttribute("mid", mid);  
-			se.setAttribute("mname", mname);
+			session = req.getSession();
+
+			session.setAttribute("mid", mid);  //이메일  
+			session.setAttribute("mname", mname);  //이름
+			session.setAttribute("mphone", mphone);  //연락처
 			
-			this.msg="alert('로그인성공!');";
-			
-		}else if(loginMember == null){  //아이디 및 패스워드가 틀릴경우 
-			
-			this.msg="alert('로그인에 실패했습니다.\\n아이디 및 패스워드를 다시 확인하세요!');"
-							+"history.go(-1);";
+			this.msg="alert('"+mname+"님 환영합니다!'); "
+					+ "location.href='../index.do';";
+//			}else {
+//				this.msg="alert('로그인에 실패했습니다.\\n아이디 및 패스워드를 다시 확인하세요!'); history.go(-1);";
+//			}
+		} 
+		m.addAttribute("msg", this.msg);
+		
+		return "/common/alert_msg";
+	}
+	
+	
+	//로그아웃 메소드 
+	@GetMapping("/member/logout.do")
+	public String logout(HttpServletRequest req, Model m) {
+		
+		HttpSession session = req.getSession();
+		session.invalidate(); //세션에 저장된 정보들 파기 
+		
+		this.msg="alert('로그아웃 되었습니다.'); "
+				+ "location.href='../index.do';";
+		
+		m.addAttribute("msg", this.msg);
+		
+		return "/common/alert_msg";
+	}
+	
+	
+	//아이디찾기 페이지로 이동
+	@GetMapping("/member/email_search.do")
+	public void email_search() {}
+	
+	//아이디찾기 메소드 
+	@PostMapping("/member/idsearch.do")
+	public String idsearch(member_DTO m_dto, Model m) {
+		String searchEmail = this.m_dao.id_search(m_dto); 
+		
+		if(searchEmail == null) {
+			m.addAttribute("memail","가입하신 정보는 확인 되지 않습니다.");
+		}else {
+			m.addAttribute("memail",searchEmail);
+		}
+		return "/WEB-INF/views/search_myinfo";
+	}
+	
+	
+	//비번찾기 페이지로 이동
+	@GetMapping("/member/passwd_search.do")
+	public void passwd_search() {}
+	
+	//비번찾기 메소드(가입한 회원이 있는지 확인) 
+	@PostMapping("/member/pwsearch.do")
+	public String pwsearch(member_DTO m_dto, Model m) {
+		int searchPw = this.m_dao.pw_search(m_dto); 
+
+		if(searchPw == 0) {
+			m.addAttribute("searchPw",searchPw);
+			m.addAttribute("msg","입력하신 정보와 일치하는 회원이 없습니다.");
+		}
+		else {
+			m.addAttribute("memail",m_dto.m_email);
+			m.addAttribute("mphone",m_dto.m_phone);
 		}
 		
-		m.addAttribute("se", se);
-		m.addAttribute("msg", this.msg);
-		return "index";
+		return "/WEB-INF/views/search_mypass";
+	}
+	
+	//비번변경 메소드 
+	@PostMapping("/member/pwmodify.do")
+	public String pwmodify(member_DTO m_dto, Model m) {
 		
+		String enc_pw = this.md5_make(m_dto.m_pass);
+		m_dto.setM_pass(enc_pw);
 		
+		int result = this.m_dao.pw_modify(m_dto);  //dto에 세팅된 값 전달 
+		System.out.println("result : " + result);
+		
+		if(result>0) {
+			this.msg = "alert('비밀번호 변경이 완료되었습니다. 로그인해주세요!');"
+							+"location.href='./login.do';";
+		}else {
+			this.msg = "alert('시스템문제로 비밀번호 변경에 실패했습니다\\n관리자에게 문의하세요');"
+							+"history.go(-1);";
+		}
+		m.addAttribute("msg",this.msg);
+		
+		return "/common/alert_msg";
 	}
 	
 }

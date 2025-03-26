@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" type="text/css" href="../css/index.css?v=2">
-<link rel="stylesheet" type="text/css" href="../css/member/login.css?v=4">
+<link rel="stylesheet" type="text/css" href="../css/member/login.css?v=5">
 <style>
 .box {
    width: 800px;

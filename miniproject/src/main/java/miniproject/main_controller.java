@@ -7,16 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class main_controller {
 
-	@GetMapping("/realty/index.do")
+	//메인페이지로 이동
+	@GetMapping("/index.do")
 	public void index() {}
 	
-	@GetMapping("/realty/member/login.do")
+	//로그인페이지로 이동
+	@GetMapping("/member/login.do")
 	public void login() {}
 	
-	@GetMapping("/realty/member/member_join.do")
+	//회원가입 페이지로 이동
+	@GetMapping("/member/member_join.do")
 	public void member_join() {}
-	
-	
+
 	
 	
 }

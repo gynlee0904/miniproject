@@ -31,5 +31,41 @@ public class member_DAO implements member_mapper{
 		member_DTO loginMember = this.st.selectOne("member_login",user_info);
 		return loginMember;
 	}
+
+	//아이디찾기 메소드
+	@Override
+	public String id_search(member_DTO m_dto) {
+		Map<String, String> user_info = new HashMap<String, String>();
+		user_info.put("m_name",m_dto.m_name); 
+		user_info.put("m_phone",m_dto.m_phone);
+
+		String user_email = this.st.selectOne("id_search",user_info);
+		return user_email;
+	}
+
+	//비밀번호 찾기 메소드
+	@Override
+	public int pw_search(member_DTO m_dto) {
+		Map<String, String> user_info = new HashMap<String, String>();
+		user_info.put("m_email",m_dto.m_email); 
+		user_info.put("m_phone",m_dto.m_phone);
+
+		int user_pw = this.st.selectOne("pw_search",user_info);
+		return user_pw;
+	}
+
+	@Override
+	public int pw_modify(member_DTO m_dto) {
+		Map<String, Object> user_info = new HashMap<String, Object>();
+		user_info.put("m_pass",m_dto.m_pass); 
+		user_info.put("midx",m_dto.midx); 
+		user_info.put("m_email",m_dto.m_email); 
+		user_info.put("m_phone",m_dto.m_phone);
+		
+		int result = this.st.update("pw_modify",user_info);
+		return result;
+	}
+
+	
 	
 }

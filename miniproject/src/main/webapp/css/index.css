@@ -145,11 +145,22 @@ main > section:nth-of-type(4) {
   height:  80px;
   object-fit:contain;
 }
+
+.menus_ul > .logins {
+  cursor: default;
+}
+.menus_ul > .logins > a{
+  cursor: pointer;
+}
+
+
 .logins {
   width: 240px !important;
   text-align: right !important;
   box-sizing: border-box;
 }
+
+
 .logins > span {
   margin-top: 20px;
   display:inline-block;

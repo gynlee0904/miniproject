@@ -43,6 +43,7 @@ form > div > input {
 	font-size:16px;
 	border:1px solid #ccc;
 	margin-bottom:5px;
+	padding-left : 15px;
 }
 
 form > div > input[type="checkbox"]{
@@ -173,6 +174,7 @@ form > div > span {
 	border-color: #ff6600;
 	margin-left:10px;
 	margin-top:0px !important;
+	padding-left: 0px;
 }
 
 div > input[type="button"]{

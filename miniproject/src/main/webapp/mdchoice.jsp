@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--추천 분양 정보-->
 <section>
 	<div class="recommend">
@@ -8,6 +9,7 @@
 		</p>
 		<div class="md_estates">
 			<ul>
+<%-- 				<c:forEach var="z" items="" begin="0" end="3"> --%>
 				<li>
 					<div>
 						<img src="./md_room/md_1.jpg">
@@ -17,6 +19,7 @@
 						레이크 라이프 누릴 수 있는 프리미엄 조경에<br>입주민 라이프스타일 맞춤형 평면 설계까지
 					</div>
 				</li>
+<%-- 				</c:forEach> --%>
 			</ul>
 		</div>
 	</div>

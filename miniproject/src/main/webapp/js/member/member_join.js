@@ -1,13 +1,13 @@
 
 //약관동의내용 로드 
 window.onload=function(){
-	var http = new XMLHttpRequest;  //ajax통신
-	http.open("GET","../../realty/agree1.txt",false);  
+	var http = new XMLHttpRequest();  //ajax통신
+	http.open("GET","../txt/agree1.txt",false);  
 	http.send();  
 	document.getElementById("agree1").innerHTML = http.response;
 	
-	var http2 = new XMLHttpRequest;  
-	http2.open("GET","../../realty/agree2.txt",false);
+	var http2 = new XMLHttpRequest();  
+	http2.open("GET","../txt/agree2.txt",false);
 	http2.send();
 	document.getElementById("agree2").innerHTML = http2.response;
 }

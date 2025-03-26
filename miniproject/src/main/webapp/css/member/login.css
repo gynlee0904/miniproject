@@ -54,18 +54,28 @@
 /* .login_pg > div > input::placeholder { */
 /* 	padding-left: 10px; */
 /* } */
-.login_pg > div > span {
+.login_pg > div > span > a {
 	position: relative;
 	color: #999999;
 	cursor: pointer;
 }
-.login_pg > div > span:nth-of-type(1) {
+/* .login_pg > div > span:nth-of-type(1) { */
+/* 	margin-right: 30px; */
+/* } */
+/* .login_pg > div > span:nth-of-type(1)::after { */
+/* 	content: "|"; */
+/* 	position: absolute; */
+/* 	margin-left: 15px; */
+/* 	cursor: default; */
+/* } */
+
+.login_pg > div > span > #idsearch {
 	margin-right: 30px;
 }
-.login_pg > div > span:nth-of-type(1)::after {
+.login_pg > div > span > #idsearch::after {
 	content: "|";
 	position: absolute;
 	margin-left: 15px;
 	cursor: default;
-		
+	pointer-events: none;
 }

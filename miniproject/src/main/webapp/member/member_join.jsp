@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
-  <link rel="stylesheet" type="text/css" href="../css/member/member_join.css?v=1">
+  <link rel="stylesheet" type="text/css" href="../css/member/member_join.css?v=2">
 <style>
 .box {
    width: 800px;
