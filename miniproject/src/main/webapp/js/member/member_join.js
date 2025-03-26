@@ -40,11 +40,6 @@ function agree_ck(){
 }
 
 
-function email_ck(){
-	
-	alert("ss")
-}
-
 var email = f.m_email;
 var pw = f.m_pass;
 var pw_ck = document.getElementById("m_pass_ck");
@@ -56,6 +51,14 @@ var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{
 var reg_nm = /^[가-힣a-zA-Z]+$/; 
 var reg_pn = /^\d{10,11}$/; 
 
+
+//이메일 중복체크
+function email_ck(){
+	
+	alert("ss")
+}
+
+//회원가입버튼 누르면 작동
 function member_join(){
 	if(email.value==""){
 		alert("가입할 이메일을 입력해주세요.");
@@ -97,9 +100,6 @@ function member_join(){
 		alert("연락처를 다시 확인해주세요 \n 숫자만 입력해야합니다.");
 		phone.focus();
 	}
-//	else if(m_agr[0].checked==false || m_agr[1].checked==false || m_agr[2].checked==false ){
-//		alert("필수사항에 모두 동의하셔야 합니다");
-//	}
 	else {
 		var requiredIndexes = [0, 1, 2];
 		var allChecked = true;

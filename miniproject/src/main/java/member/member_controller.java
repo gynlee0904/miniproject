@@ -48,7 +48,6 @@ public class member_controller extends m_encry{
 		
 		int result = this.m_dao.member_insert(m_dto);  //dto에 세팅된 값 전달 
 		
-		
 		if(result>0) {
 			this.msg="alert('회원가입이 완료되었습니다. 로그인해주세요!');"
 					+"location.href='./login.do';";
@@ -73,7 +72,7 @@ public class member_controller extends m_encry{
 		
 		
 		//로그인 후 회원정보 세션에 저장 
-		if(loginMember!= null && mid == loginMember.m_email && mpw == loginMember.m_pass) {  
+		if(loginMember!= null && mid.equals(loginMember.m_email) && mpw.equals(loginMember.m_pass)) {  
 			String mname = loginMember.m_name;
 			
 			se = req.getSession();
@@ -81,7 +80,7 @@ public class member_controller extends m_encry{
 			se.setAttribute("mid", mid);  
 			se.setAttribute("mname", mname);
 			
-			this.msg="alert('로그인에 성공했습니다.');";
+			this.msg="alert('로그인성공!');";
 			
 		}else if(loginMember == null){  //아이디 및 패스워드가 틀릴경우 
 			
@@ -91,7 +90,7 @@ public class member_controller extends m_encry{
 		
 		m.addAttribute("se", se);
 		m.addAttribute("msg", this.msg);
-		return "/realty/index";
+		return "index";
 		
 		
 	}

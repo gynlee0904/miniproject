@@ -5,17 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>이메일 찾기</title>
-<link rel="stylesheet" type="text/css" href="../../realty/css/index.css?v=1">
-<link rel="stylesheet" type="text/css" href="../../realty/css/member/email_search.css?v=2">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="../css/member/email_search.css?v=2">
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
-<%@ include file="../../realty/common/top.jsp" %>
+<%@ include file="../common/top.jsp" %>
 
 <!-- 메인부분 -->
 <%@ include file="./email_search_view.jsp" %>
 
 <!-- 푸터부분 -->
-<%@ include file="../../realty/common/copyright.jsp" %>
+<%@ include file="../common/copyright.jsp" %>
 </body>
 </html>

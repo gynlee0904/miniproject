@@ -59,4 +59,4 @@
 		</div>
 	</form>
 </main>
-<script src="../js/member/member_join.js?v=2"></script>
+<script src="../../realty/js/member/member_join.js?v=2"></script>

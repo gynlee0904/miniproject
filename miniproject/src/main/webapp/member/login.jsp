@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../../realty/css/index.css?v=1">
-  <link rel="stylesheet" type="text/css" href="../../realty/css/member/member_join.css?v=1">
+<title>로그인</title>
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=2">
+<link rel="stylesheet" type="text/css" href="../css/member/login.css?v=4">
 <style>
 .box {
    width: 800px;
@@ -13,17 +14,17 @@
    border: 1px solid black;
    overflow: auto;
 }
+
 </style>
-<title>회원가입</title>
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
-<%@ include file="../../realty/common/top.jsp" %>
+<%@ include file="../common/top.jsp" %>
 
 <!-- 메인부분 -->
-<%@ include file="./member_join_view.jsp" %>
+<%@ include file="./login_view.jsp" %>
 
 <!-- 푸터부분 -->
-<%@ include file="../../realty/common/copyright.jsp" %>
+<%@ include file="../common/copyright.jsp" %>
 </body>
 </html>
