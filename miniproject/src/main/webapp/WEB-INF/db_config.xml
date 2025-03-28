@@ -39,6 +39,9 @@
 			<property name="mapperLocations">
 			<array>
 				<value>classpath:/META-INF/member_mapper.xml</value>
+				<value>classpath:/META-INF/md_mapper.xml</value>
+				<value>classpath:/META-INF/week_mapper.xml</value>
+				<value>classpath:/META-INF/cms_mapper.xml</value>
 			</array>
 		</property>  
 	</bean>

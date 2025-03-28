@@ -20,7 +20,22 @@ public class member_DAO implements member_mapper{
 		int result = this.st.insert("member_insert",m_dto);
 		return result;
 	}
+	
+	//아이디 중복체크
+	@Override
+	public int eml_check(String m_email) {
+		int result = this.st.selectOne("id_check",m_email);
+		return result;
+	}
 
+	//폰번 중복체크
+	@Override
+	public int phn_check(String m_phone) {
+		int result = this.st.selectOne("phn_check",m_phone);
+		return result;
+	}
+
+	
 	//로그인메소드
 	@Override
 	public member_DTO member_login(member_DTO m_dto) {
@@ -54,6 +69,7 @@ public class member_DAO implements member_mapper{
 		return user_pw;
 	}
 
+	//비밀번호 수정 메소드
 	@Override
 	public int pw_modify(member_DTO m_dto) {
 		Map<String, Object> user_info = new HashMap<String, Object>();
@@ -65,6 +81,11 @@ public class member_DAO implements member_mapper{
 		int result = this.st.update("pw_modify",user_info);
 		return result;
 	}
+
+	
+
+
+
 
 	
 	

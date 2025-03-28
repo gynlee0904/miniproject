@@ -5,8 +5,8 @@
 	<section class="sub">
 		<div>
 			<ul>
-				<li>이메일 찾기</li>
-				<li>비밀번호 찾기</li>
+				<li id="sid">이메일 찾기</li>
+				<li id="spw">비밀번호 찾기</li>
 			</ul>
 		</div>
 		<div class="text1">
@@ -23,4 +23,4 @@
 	</section>
 </main>
 </form>
-<script src="../js/member/info_search.js?v=1"></script>
+<script src="../js/member/info_search.js?v=2"></script>

@@ -16,7 +16,7 @@ create table member (
 );
 
 
-
+select count(*) as cnt from member where m_email='fddfhdfh@naver.com';
 
 alter table member change modyfied_date modified_date timestamp;
 alter table member drop column m_agr1;

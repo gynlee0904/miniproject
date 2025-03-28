@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--금주 분양 매물 정보 시작-->
 <section>
 	<div class="weekdays">
@@ -8,16 +9,18 @@
 		</p>
 		<div class="week_estates">
 			<ul>
+				<c:forEach var="wk" items="${wk_allList}">
 				<li>
 					<span>매매</span>
-					<div>LH센트럴힐(공공임대)</div>
-					<aside>송파구 문정동</aside> 
-					<span>아파트 | 공공임대</span> 
-					<label>2023.11 분양 | 2024.09 입주</label>
+					<div>${wk.apt_name}</div>
+					<aside>${wk.apt_addr}</aside> 
+					<span>${wk.apt_type} | ${wk.rental_type}</span> 
+					<label>${wk.sale_date} | ${wk.move_in_date}</label>
 					<div>
-						<img src="./room/room1.jpg">
+						<img src="./room/${wk.apt_fileRenm}">
 					</div>
 				</li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

@@ -66,7 +66,6 @@ function search_pw(){
 }
 
 
-
 //비민번호변경 버튼 클릭시 작동
 function modify_pass(){
 	if(m_pw.value==""){
@@ -90,3 +89,14 @@ function modify_pass(){
 		frm.submit();
 	}
 }
+
+
+var sid = document.getElementById("sid");
+var spw = document.getElementById("spw");
+sid.addEventListener("click",function(){
+	location.href="../member/email_search.do";
+});
+spw.addEventListener("click",function(){
+	location.href="../member/passwd_search.do";
+});
+

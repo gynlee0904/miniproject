@@ -1,54 +1,96 @@
 package member;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import miniproject.m_encry;
 
+@CrossOrigin(origins="*", allowedHeaders = "*")
 @Controller
 public class member_controller extends m_encry{
-	@Resource(name="memberDAO")
-	private member_DAO m_dao;
+	@Resource(name="memberDAO") private member_DAO m_dao;
+	@Resource(name="memberDTO") private member_DTO m_dto;
 	
-	@Resource(name="memberDTO") 
-	private member_DTO m_dto;
-	
+	PrintWriter pw =null;	
 	String msg = "";
+	int result= 0;
+	
 	
 	//회원가입 메소드 
 	@PostMapping("/member/member_ok.do")
 	public String member_ok(member_DTO m_dto, 
 								String[]m_agr,
 								Model m) throws Exception {
-
+		System.out.println(m_agr.length);
 		m_dto.setM_agr1(m_agr[0]);
 		m_dto.setM_agr2(m_agr[1]);
 		m_dto.setM_agr3(m_agr[2]);
-		if(m_agr.length==3) { m_dto.setM_agr4("N"); }
+		if(m_agr.length==3) { 
+			m_dto.setM_agr4("N"); 
+		}else {
+			m_dto.setM_agr4(m_agr[3]);
+		}
 
 		String enc_pw = this.md5_make(m_dto.m_pass);
 		m_dto.setM_pass(enc_pw);
 		
 		int result = this.m_dao.member_insert(m_dto);  //dto에 세팅된 값 전달 
-		
-		if(result>0) {
+		if(result>0 ) {
 			this.msg="alert('회원가입이 완료되었습니다. 로그인해주세요!');"
 					+"location.href='./login.do';";
 		}
 		m.addAttribute("msg",this.msg);
 		
 		return "/common/alert_msg";
+	}
+	
+	//폰번중복체크 메소드
+	@GetMapping("/member/phncheck.do")
+	public String phncheck(@RequestParam String m_phone, HttpServletResponse res) throws IOException {
+		this.pw = res.getWriter();
+		
+		int result = this.m_dao.phn_check(m_phone);
+		if(result>0) {
+			this.msg = "no";	//휴대폰 중복
+		}else {
+			this.msg = "ok";  //휴대폰 중복x
+		}
+	
+		this.pw.print(this.msg);
+		return null;
+	}
+	
+	//아이디중복체크 메소드
+	@GetMapping("/member/idcheck.do")
+	public String idcheck(@RequestParam String m_email, HttpServletResponse res) throws IOException {
+		this.pw = res.getWriter();
+		
+		int result = this.m_dao.eml_check(m_email);
+
+		if(result>0) {
+			this.msg = "no";	//이메일 중복
+		}else {
+			this.msg = "ok";  //이메일 사용가능
+		}
+		
+		this.pw.print(this.msg);
+		return null;
 	}
 	
 	
@@ -148,6 +190,7 @@ public class member_controller extends m_encry{
 		
 		return "/WEB-INF/views/search_mypass";
 	}
+	
 	
 	//비번변경 메소드 
 	@PostMapping("/member/pwmodify.do")

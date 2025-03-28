@@ -1,17 +1,70 @@
+var email = document.getElementById("email");
+var pw = f.m_pass;
+var pw_ck = document.getElementById("m_pass_ck");
+var mname = f.m_name;
+var phone = document.getElementById("phone");
+var m_agr = f.m_agr;
+var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣]+\.[a-zA-Z]{2,}$/;
+var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{10,16}$/; 
+var reg_nm = /^[가-힣a-zA-Z]+$/; 
+var reg_pn = /^\d{10,11}$/; 
+var http, http2;  //ajax용 변수
 
 //약관동의내용 로드 
 window.onload=function(){
-	var http = new XMLHttpRequest();  //ajax통신
+	http = new XMLHttpRequest();  //ajax통신
 	http.open("GET","../txt/agree1.txt",false);  
 	http.send();  
 	document.getElementById("agree1").innerHTML = http.response;
 	
-	var http2 = new XMLHttpRequest();  
+	http2 = new XMLHttpRequest();  
 	http2.open("GET","../txt/agree2.txt",false);
 	http2.send();
 	document.getElementById("agree2").innerHTML = http2.response;
 }
 
+
+//아이디 중복체크  
+function email_ck(){
+	if(email.value==""){
+		alert("가입할 이메일을 입력해주세요.");
+		email.focus();
+	}
+	else if(!reg_eml.test(email.value)){
+		alert("이메일을 정확하게 입력해주세요.");
+		email.focus();
+	}
+	else {
+		this.ajax_idcheck(email.value); //아이디 중복체크
+	}
+}
+
+//이메일 중복체크(ajax)
+function ajax_idcheck(email){
+	http = new XMLHttpRequest();
+	http.onreadystatechange = function(){
+		if(http.readyState == 4 && http.status == 200){
+			console.log(this.response)
+			if(this.response=="ok"){
+//				setTimeout(function(){	
+					alert("해당 이메일은 사용가능합니다");
+					f.m_email.readOnly = true; 
+					f.m_email.style.backgroundColor = "#ccc" 
+//				},2000);
+			}else {
+				alert("해당 이메일은 이미 가입중입니다");
+				f.m_email.value = "";  //입력값 초기화 
+			}
+		}
+		else if(http.status == 404){  //예외처리
+//			console.log(http.status)
+			alert("오류 발생 \n 관리자에게 문의하세요");
+		}
+	}
+
+	http.open("get","./idcheck.do?m_email="+email,true);
+	http.send();	
+}
 
 var ob =  f.m_agr; //name이 m_agr인 체크박스
 var ea = ob.length;  //name이 m_agr인 박스 전체 개수
@@ -40,35 +93,9 @@ function agree_ck(){
 }
 
 
-var email = f.m_email;
-var pw = f.m_pass;
-var pw_ck = document.getElementById("m_pass_ck");
-var mname = f.m_name;
-var phone = f.m_phone;
-var m_agr = f.m_agr;
-var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣]+\.[a-zA-Z]{2,}$/;
-var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{10,16}$/; 
-var reg_nm = /^[가-힣a-zA-Z]+$/; 
-var reg_pn = /^\d{10,11}$/; 
-
-
-//이메일 중복체크
-function email_ck(){
-	
-	alert("ss")
-}
-
 //회원가입버튼 누르면 작동
 function member_join(){
-	if(email.value==""){
-		alert("가입할 이메일을 입력해주세요.");
-		email.focus();
-	}
-	else if(!reg_eml.test(email.value)){
-		alert("이메일을 정확하게 입력해주세요.");
-		email.focus();
-	}
-	else if(pw.value==""){
+	if(pw.value==""){
 		alert("패스워드를 입력해주세요.");
 		pw.focus();
 	}
@@ -112,9 +139,31 @@ function member_join(){
         if (!allChecked) {
             alert("필수사항에 모두 동의하셔야 합니다");
         } else {
-//            alert("통과!");
-			f.action="./member_ok.do";
-			f.submit();
+			this.ajax_phncheck(phone.value) //폰번중복체크
         }
 	}
+}
+
+//폰번중복체크(ajax)
+function ajax_phncheck(phone){
+	http = new XMLHttpRequest();
+	http.onreadystatechange = function(){
+		if(http.readyState == 4 && http.status == 200){
+			if(this.response=="ok"){
+				f.m_phone.readOnly = true;  
+				f.action="./member_ok.do";
+				f.submit();
+			}else {
+				alert("이미 가입되어있는 휴대폰번호 입니다. \n 휴대폰번호를 다시 확인해주세요.");
+				f.m_phone.focus();  
+			}
+		}
+		else if(http.status == 404){  //예외처리
+			console.log(http.status)
+			alert("오류 발생 \n 관리자에게 문의하세요");
+		}
+	}
+
+	http.open("get","./phncheck.do?m_phone="+phone,true);
+	http.send();
 }

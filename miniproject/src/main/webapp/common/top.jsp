@@ -1,7 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!--최상단-->
 <header>
 	<div class="top_banner"></div>
@@ -12,12 +14,12 @@
 	<div class="menus">
 		<ul class="menus_ul">
 			<li><a href="../index.do" class="home"><img src="../logo/e_click_logo.png"></a></li>
-			<li><a href="#">일반매물</a></li>
-			<li><a href="#">추천매물</a></li>
-			<li><a href="#">중계의뢰</a></li>
-			<li><a href="#">상담신청</a></li>
-			<li><a href="#">업체의뢰</a></li>
-			<li><a href="#">의뢰현황</a></li>
+			<li><a href="#" >일반매물</a></li>
+			<li><a href="#" >추천매물</a></li>
+			<li><a href="#" >중계의뢰</a></li>
+			<li><a href="../cms/counsel.do" >상담신청</a></li>
+			<li><a href="#" >업체의뢰</a></li>
+			<li><a href="#" >의뢰현황</a></li>
 			<li class="logins">
 			<c:choose>
 				<c:when test="${mname==null || mid==null}">
@@ -34,4 +36,4 @@
 	</div>
 </nav>
 <!--메뉴끝-->
-<script src="../js/index.js?v=2"></script>
+<script src="../js/top.js?v=1"></script>
