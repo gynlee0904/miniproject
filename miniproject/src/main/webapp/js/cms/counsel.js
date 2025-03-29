@@ -31,7 +31,7 @@ function check_apt(){
 		}
 		w++;
 	}
-	if(apt_cnt==0){
+	if(apt_cnt<=0){
 		alert("주거형태는 최소 1개는 선택되어야 합니다.");
 		apt_type.focus();
 	}else {
@@ -62,11 +62,10 @@ function check_date(){
 		counsel_content.focus();
 		
 	}else if(counsel_content.value.trim().length<11){
-		
 		alert("상담내용은 최소 10자 이상 입력해야 합니다.");
 		counsel_content.focus();
+		
 	}else {
-		alert("담당자가 확인 후 해당 상담일시에 맞춰서 연락 드립니다.");
 		
 		frm.method="post";
 		frm.action="../cms/request_cms.do";

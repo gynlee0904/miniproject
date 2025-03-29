@@ -14,6 +14,10 @@
 			<input type="button" value="로그인" onclick="login_go();">
 		</div>
 		<div>
+			<input type="button" value="카카오로그인" class="kakao_btn">
+		</div>
+		<div>
+			<span ><a id="memberjoin">회원가입</a></span>
 			<span class="find"><a id="idsearch">이메일 찾기</a></span> 
 			<span class="find"><a id="pwsearch">비밀번호 찾기</a></span>
 		</div>

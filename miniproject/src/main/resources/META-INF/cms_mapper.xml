@@ -4,7 +4,7 @@
 
 <!-- 상담신청 -->
 <insert id="counsel_insert" >
-	insert into cms values ('0',#{c_name},#{c_email},#{m_name},#{c_phone},#{rental_type},#{apt_type},#{counsel_date},#{counsel_content},now(),'N')
+	insert into cms values ('0',#{c_name},#{c_email},#{c_phone},#{rental_type},#{apt_type},#{counsel_date},#{counsel_content},now(),'N')
 </insert>
 
 

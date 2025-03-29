@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상담신청</title>
-<link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=4">
 <link rel="stylesheet" type="text/css" href="../css/cms/counsel.css?v=2">
 </head>
 <body>

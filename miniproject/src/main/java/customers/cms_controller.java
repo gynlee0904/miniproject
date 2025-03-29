@@ -14,7 +14,7 @@ import member.loginckeck;
 
 @Controller
 public class cms_controller {
-	@Resource(name="cmsDAO") cms_DAO m_dao;
+	@Resource(name="cmsDAO") cms_DAO c_dao;
 	@Resource(name="cmsDTO") cms_DTO c_dto;
 	@Resource(name="loginck") loginckeck loginck;
 	
@@ -52,16 +52,16 @@ public class cms_controller {
 			return "/common/alert_msg";
 		}
 		else {  //로그인 되어있으면
+			this.result = this.c_dao.cms_insert(c_dto);  //dto에 세팅된 값 전달 
+			if(this.result>0 ) {
+				this.msg="alert('담당자가 확인 후 해당 상담일시에 맞춰서 연락 드립니다.');"
+						+"location.href='../index.do';";
+			}
+			m.addAttribute("msg",this.msg);
 			
+			return "/common/alert_msg";
 			
-			
-			
-			
-			
-			
-			
-			
-			return null;
+
 		}
 	}
 	

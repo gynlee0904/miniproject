@@ -28,7 +28,7 @@
 				</c:when>
 				<c:otherwise>
 <%-- 					${mname}님 환영합니다 <a id="a">[로그아웃]</a> --%>
-					${mname}님 환영합니다 <a id="logout"><img src="../ico/logout.svg"></a>
+					${mname}님 환영합니다 <a id="logout" title="로그아웃"><img src="../ico/logout.svg" ></a>
 				</c:otherwise>
 			</c:choose>
 			</li>
@@ -36,4 +36,4 @@
 	</div>
 </nav>
 <!--메뉴끝-->
-<script src="../js/top.js?v=1"></script>
+<script src="../js/top.js?v=2"></script>
