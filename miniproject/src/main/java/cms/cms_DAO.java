@@ -1,4 +1,4 @@
-package customers;
+package cms;
 
 import javax.annotation.Resource;
 

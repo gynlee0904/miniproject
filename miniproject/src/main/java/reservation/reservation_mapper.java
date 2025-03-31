@@ -1,0 +1,9 @@
+package reservation;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface reservation_mapper {
+	int reservation_insert(reservation_DTO r_DTO,String m_email);  //방문예약등록 메소드
+	reservation_DTO reservation_check(reservation_DTO r_DTO);  //방문예약 내용확인 메소드
+}

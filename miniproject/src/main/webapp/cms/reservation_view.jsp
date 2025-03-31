@@ -7,15 +7,19 @@
 		<div>
 			<span class="list_title"> 
 				<span style="color: blue;">분양정보</span>
-				<span style="color: red;">LH센트럴힐(공공임대)</span>
-				<input type="hidden" name="" value="">
+				<span style="color: red;">${week_one.apt_name}( ${week_one.rental_type} )</span>
+				<input type="hidden" name="aidx" value="${week_one.aidx}">
+				<input type="hidden" name="apt_name" value="${week_one.apt_name}">
+				<input type="hidden" name="rental_type" value="${week_one.rental_type}">
+				<input type="hidden" name="mid" value="${mid}">
+				<input type="hidden" name="rsv_yn" value="ok">
 			</span>
 			<ul class="sub_ul">
 				<li>방문일시</li>
-				<li><input type="date" class="sel_input" name=""></li>
+				<li><input type="date" class="sel_input" name="visit_date"></li>
 				<li>방문시간</li>
 				<li>
-					<select class="sel_input2" name="">
+					<select class="sel_input2" name="visit_time">
 						<option value="">방문시간선택</option>
 						<option value="09:00">09:00</option>
 						<option value="11:00">11:00</option>
@@ -25,19 +29,21 @@
 					</select> * 해당 시간에 맞춰서 방문해 주셔야 합니다.
 				</li>
 				<li>방문자명</li>
-				<li><input type="text" class="sel_input" readonly name="" value=""></li>
+				<li><input type="text" class="sel_input" readonly name="m_name" value="${mname}"></li>
 				<li>방문인원</li>
 				<li>
-					<label><input type="radio" class="sel_check" checked name="" value="1명"> 1명</label> 
-					<label><input type="radio" class="sel_check" name="" value="2명"> 2명</label> 
+					<label><input type="radio" class="sel_check" checked name="visit_in" value="1명" checked> 1명</label> 
+					<label><input type="radio" class="sel_check" name="visit_in" value="2명"> 2명</label> 
 					※ 방문인원은 최대 2명까지 입니다.</li>
 				<li>연락처</li>
-				<li><input type="text" class="sel_input" readonly name="" value=""></li>
+				<li><input type="text" class="sel_input" readonly name="m_phone" value="${mphone}"></li>
 			</ul>
 		</div>
 		<div>
-			<input type="button" value="방문 예약등록" onclick="">
+			<input type="button" value="방문 예약등록" onclick="rsv_complete();">
 		</div>
 	</section>
 </main>
 </form>
+
+<script src="../js/product/week.js?v=3"></script>

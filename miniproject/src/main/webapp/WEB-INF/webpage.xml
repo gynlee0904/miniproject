@@ -16,7 +16,7 @@
 		<beans:property name="suffix" value=".jsp"></beans:property>
 	</beans:bean>
 	
-	<context:component-scan base-package="miniproject,member,mdchoice,product,customers" />
+	<context:component-scan base-package="miniproject,member,mdchoice,product,cms,reservation" />
 	
 	<!-- IO를 사용하기 위한 환경설정 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

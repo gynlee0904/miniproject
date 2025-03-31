@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservation.reservation_mapper">
+
+<!-- 방문예약 등록 -->
+<insert id="reservation_insert" >
+	insert into reservation_info values ('0',#{apt_name},#{visit_date},#{visit_time},#{m_name},#{visit_in},#{m_phone},'Y',#{m_email},null,now(),null)
+</insert>
+
+
+
+
+</mapper>

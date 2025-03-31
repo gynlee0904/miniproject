@@ -50,7 +50,8 @@ function check_date(){
     selectedDate.setHours(0, 0, 0, 0);
 
 	if(counsel_date.value==""){
-		alert("상담받으실 날짜를 선택하세요.")
+		alert("상담받으실 날짜를 선택하세요.");
+		counsel_date.focus();
 		
 	}else if(selectedDate < today){
 		alert("오늘 이전의 날짜는 선택할 수 없습니다. 다시 선택해주세요")

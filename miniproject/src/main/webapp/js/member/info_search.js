@@ -36,7 +36,7 @@ function search_eml(){
 
 //정보확인 클릭시 작동
 function login_go(){
-	location.href="../member/login.do";
+	location.href="./login.do";
 }
 
 
@@ -94,9 +94,9 @@ function modify_pass(){
 var sid = document.getElementById("sid");
 var spw = document.getElementById("spw");
 sid.addEventListener("click",function(){
-	location.href="../member/email_search.do";
+	location.href="./email_search.do";
 });
 spw.addEventListener("click",function(){
-	location.href="../member/passwd_search.do";
+	location.href="./passwd_search.do";
 });
 

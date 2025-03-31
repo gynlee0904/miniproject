@@ -34,7 +34,7 @@ public class main_controller {
 		
 		//md_choice 전체 출력 메소드 
 		List<md_DTO> md_allList = this.m_dao.md_allList();
-		
+	
 		m.addAttribute("wk_allList", wk_allList);
 		m.addAttribute("md_allList", md_allList);
 	}

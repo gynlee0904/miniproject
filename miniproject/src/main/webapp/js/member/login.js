@@ -23,10 +23,10 @@ var pwsearch = document.getElementById("pwsearch");
 
 //아이디찾기 클릭시 작동 
 idsearch.addEventListener("click", function() {
-    idsearch.href = "../member/email_search.do"; 
+    idsearch.href = "./email_search.do"; 
 });
 
 //비밀번호찾기 클릭시 작동 
 pwsearch.addEventListener("click", function() {
-    pwsearch.href = "../member/passwd_search.do"; 
+    pwsearch.href = "./passwd_search.do"; 
 });

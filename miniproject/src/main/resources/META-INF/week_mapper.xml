@@ -8,6 +8,9 @@
 </select>
 
 
-
+<!-- weekinfo 개별상품페이지 보기 -->
+<select id="wk_oneProduct" resultType="wk_dto" parameterType="Map">
+	select * from type_info where aidx = #{aidx} and apt_name=#{apt_name}
+</select>
 
 </mapper>

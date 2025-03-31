@@ -37,7 +37,7 @@ public class member_controller extends m_encry{
 	public String member_ok(member_DTO m_dto, 
 								String[]m_agr,
 								Model m) throws Exception {
-		System.out.println(m_agr.length);
+		
 		m_dto.setM_agr1(m_agr[0]);
 		m_dto.setM_agr2(m_agr[1]);
 		m_dto.setM_agr3(m_agr[2]);

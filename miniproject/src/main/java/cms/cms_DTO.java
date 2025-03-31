@@ -1,4 +1,4 @@
-package customers;
+package cms;
 
 import org.springframework.stereotype.Repository;
 
