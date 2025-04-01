@@ -14,7 +14,7 @@
 		<typeAlias alias="md_dto" type="mdchoice.md_DTO"/>
 		<typeAlias alias="wk_dto" type="product.week_DTO"/>
 		<typeAlias alias="cms_dto" type="cms.cms_DTO"/>
-		<typeAlias alias="cms_dto" type="reservation.reservation_DTO"/>
+		<typeAlias alias="rsv_dto" type="reservation.reservation_DTO"/>
 	</typeAliases>
 </configuration>
 

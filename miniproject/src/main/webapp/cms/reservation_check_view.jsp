@@ -6,7 +6,7 @@
 		<div>
 			<span class="list_title"> 
 				<span style="color: blue;">분양정보</span>
-				<span style="color: red;">${rsv_ck.apt_name}(공공임대)</span>
+				<span style="color: red;">${rsv_ck.apt_name}</span>
 			</span>
 			<ul class="sub_ul">
 				<li>방문일시</li>
@@ -25,7 +25,8 @@
 			</ul>
 		</div>
 		<div>
-			<input type="button" value="메인페이지로 이동" onclick="">
+			<input type="button" value="메인페이지로 이동" onclick="go_main();">
 		</div>
 	</section>
 </main>
+<script src="../js/top.js?v=3"></script>

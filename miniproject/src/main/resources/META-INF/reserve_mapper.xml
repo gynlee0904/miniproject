@@ -4,10 +4,28 @@
 
 <!-- 방문예약 등록 -->
 <insert id="reservation_insert" >
-	insert into reservation_info values ('0',#{apt_name},#{visit_date},#{visit_time},#{m_name},#{visit_in},#{m_phone},'Y',#{m_email},null,now(),null)
+	insert into reservation_info values ('0',#{aidx},#{apt_name},#{visit_date},#{visit_time},#{m_name},#{visit_in},#{m_phone},'Y',null,null,now(),null)
 </insert>
 
+<!-- 중복예약방지 -->
+<select id="dupl_ck" resultType="int">
+	select count(*) as cnt from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time}
+</select>
 
+<!--  ridx 확인 -->
+<select id="info_ck" resultType="int">
+	select ridx from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time}
+</select>
+
+<!-- 중복예약방지+ridx 확인 -->
+<!-- <select id="rinfo_ck" resultType="int"> -->
+<!-- 	select ridx, count(*) as cnt from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time} group by ridx -->
+<!-- </select> -->
+
+<!-- 방문예약 내용확인 메소드 -->
+<select id="reservation_check" resultType="rsv_dto">
+	select * from reservation_info where ridx=#{ridx}
+</select>
 
 
 </mapper>

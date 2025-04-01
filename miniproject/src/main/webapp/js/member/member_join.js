@@ -7,7 +7,7 @@ var m_agr = f.m_agr;
 var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣]+\.[a-zA-Z]{2,}$/;
 var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{10,16}$/; 
 var reg_nm = /^[가-힣a-zA-Z]+$/; 
-var reg_pn = /^\d{10,11}$/; 
+var reg_pn = /^01\d{8,9}$/;
 var http, http2;  //ajax용 변수
 
 //약관동의내용 로드 

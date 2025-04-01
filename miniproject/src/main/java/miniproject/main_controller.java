@@ -19,9 +19,7 @@ import product.week_DTO;
 public class main_controller {
 	PrintWriter pw = null;
 	@Resource(name="wkDAO") week_DAO w_dao;
-	@Resource(name="wkDTO") week_DTO w_dto;
 	@Resource(name="mdDAO") md_DAO m_dao;
-	@Resource(name="mdDTO") md_DTO m_dto;
 	
 	String msg = "";
 	

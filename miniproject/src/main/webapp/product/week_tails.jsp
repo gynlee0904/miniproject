@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>금주 분양 매물 정보</title>
-<link rel="stylesheet" type="text/css" href="../css/index.css?v=2">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=6">
 <link rel="stylesheet" type="text/css" href="../css/product/week_tails.css?v=2">
 </head>
 <body>

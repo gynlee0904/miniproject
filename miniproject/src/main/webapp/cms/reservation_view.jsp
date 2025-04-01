@@ -7,11 +7,10 @@
 		<div>
 			<span class="list_title"> 
 				<span style="color: blue;">분양정보</span>
-				<span style="color: red;">${week_one.apt_name}( ${week_one.rental_type} )</span>
+				<span style="color: red;">${week_one.apt_name}</span>
+				
 				<input type="hidden" name="aidx" value="${week_one.aidx}">
 				<input type="hidden" name="apt_name" value="${week_one.apt_name}">
-				<input type="hidden" name="rental_type" value="${week_one.rental_type}">
-				<input type="hidden" name="mid" value="${mid}">
 				<input type="hidden" name="rsv_yn" value="ok">
 			</span>
 			<ul class="sub_ul">
@@ -45,5 +44,5 @@
 	</section>
 </main>
 </form>
-
-<script src="../js/product/week.js?v=3"></script>
+<script> var id = '${week_one.aidx}';</script>
+<script src="../js/product/week.js?v=4"></script>

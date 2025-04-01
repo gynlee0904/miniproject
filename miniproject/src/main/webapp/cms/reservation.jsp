@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>모댈 하우스 사전 방문예약</title>
-<link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=6">
 <link rel="stylesheet" type="text/css" href="../css/cms/reservation.css?v=1">
 </head>
 <body>

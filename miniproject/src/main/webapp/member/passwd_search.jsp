@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=6">
 <link rel="stylesheet" type="text/css" href="../css/member/passwd_search.css?v=1">
 </head>
 <body>

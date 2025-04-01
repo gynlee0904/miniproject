@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../css/index.css?v=6">
-  <link rel="stylesheet" type="text/css" href="../css/member/member_join.css?v=2">
+<title>추천분양 정보 게시판</title>
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="../css/product/md_board_view.css?v=5">
 <style>
 .box {
    width: 800px;
@@ -13,15 +14,15 @@
    border: 1px solid black;
    overflow: auto;
 }
+
 </style>
-<title>회원가입</title>
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->
 <%@ include file="../common/top.jsp" %>
 
 <!-- 메인부분 -->
-<%@ include file="./member_join_view.jsp" %>
+<%@ include file="./md_board_view_dtl.jsp" %>
 
 <!-- 푸터부분 -->
 <%@ include file="../common/copyright.jsp" %>

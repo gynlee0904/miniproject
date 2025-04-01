@@ -22,9 +22,9 @@ public class m_logincheck {
 		String mname = (String)this.se.getAttribute("mname");
 		String mphone = (String)this.se.getAttribute("mphone");
 		
-		System.out.println("mid : " + mid);
-		System.out.println("mname : " + mname);
-		System.out.println("mphone : " +mphone);
+//		System.out.println("mid : " + mid);
+//		System.out.println("mname : " + mname);
+//		System.out.println("mphone : " +mphone);
 		
 		if(mid==null || mname==null || mphone==null ) {
 			this.msg = "no";

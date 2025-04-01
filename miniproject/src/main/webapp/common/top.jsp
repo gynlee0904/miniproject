@@ -13,13 +13,13 @@
 <nav>
 	<div class="menus">
 		<ul class="menus_ul">
-			<li><a href="../index.do" class="home"><img src="../logo/e_click_logo.png"></a></li>
-			<li><a href="#" >일반매물</a></li>
-			<li><a href="#" >추천매물</a></li>
-			<li><a href="#" >중계의뢰</a></li>
+			<li onclick="go_main();"><img src="../logo/e_click_logo.png"></a></li>
+			<li>일반매물</li>
+			<li>추천매물</li>
+			<li>중계의뢰</li>
 			<li><a href="../cms/counsel.do" >상담신청</a></li>
-			<li><a href="#" >업체의뢰</a></li>
-			<li><a href="#" >의뢰현황</a></li>
+			<li>업체의뢰</li>
+			<li>의뢰현황</li>
 			<li class="logins">
 			<c:choose>
 				<c:when test="${mname==null || mid==null}">
@@ -36,4 +36,4 @@
 	</div>
 </nav>
 <!--메뉴끝-->
-<script src="../js/top.js?v=2"></script>
+<script src="../js/top.js?v=4"></script>
