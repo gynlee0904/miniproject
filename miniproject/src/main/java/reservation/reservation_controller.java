@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import miniproject.m_logincheck;
+import miniproject.m_paging;
 import product.week_DAO;
 import product.week_DTO;
 
@@ -22,7 +23,9 @@ public class reservation_controller {
 	@Resource(name="rsvDAO") reservation_DAO r_dao;
 	@Resource(name="rsvDTO") reservation_DTO r_dto;
 	@Resource(name="loginck") m_logincheck loginck;
+	@Resource(name="paging") m_paging paging;
 	@Resource(name="wkDAO") week_DAO w_dao;
+	
 	
 	PrintWriter pw = null;
 	String msg = "";
@@ -115,7 +118,13 @@ public class reservation_controller {
 			
 		}
 		else {  //로그인 되어있으면 해당 페이지로 이동	
+			this.result = this.r_dao.check_date();  //날짜지난건 리스트 삭제 
+			int list_total = this.r_dao.rsv_mytotal(mphone);  //내 예약리스트 총개수 
+			int sno = this.paging.serial_no(1, 10);
 			List<reservation_DTO> rsv_myList = this.r_dao.rsv_myList(mphone);
+			
+			m.addAttribute("sno",sno); 
+			m.addAttribute("list_total", list_total);
 			m.addAttribute("rsv_myList", rsv_myList);	
 		}
 		return this.url;
@@ -142,6 +151,8 @@ public class reservation_controller {
 		
 		return "/common/alert_msg";
 	}
+	
+
 	
 	
 	

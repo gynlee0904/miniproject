@@ -12,9 +12,10 @@
 <!--추천 분양 정보-->
 <section>
 	<div class="recommend">
-		<p>추천분양정보 <br>
+		<p onclick="go_rcm_pd();">추천분양정보 <br>
 			<em>실시간 추천 분양정보를 한곳에!</em>
 		</p>
+
 		<div class="md_estates">
 			<ul>
 				<c:forEach var="md" items="${md_allList}">

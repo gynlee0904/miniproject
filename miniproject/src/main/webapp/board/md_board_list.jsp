@@ -46,8 +46,6 @@
 			<form id="frm">
 			<input type="hidden" name="midx" value="">
 			</form>
-			
-			
 		</div>
 		
 		<!-- 페이징 -->
@@ -64,7 +62,7 @@
 		<!-- 검색 -->
 		<form id="sch_frm">
 		<div class="info_search">
-			<input type="text" class="search_text" placeholder="검색어를 입력하세요" name="keyword" value="${md_search}">
+			<input type="text" class="search_text" placeholder="검색어를 입력하세요" name="keyword" value="${keyword}">
 			<input type="button" value="검색" class="search_btn" onclick="go_search();">
 		</div>
 		</form> 

@@ -23,9 +23,10 @@
 			</ul>
 			</c:if>
 			
+			<c:set var="no" value="${list_total}" />
 			<c:forEach var="rsv_list" items="${rsv_myList}" varStatus="idx">
 			<ul class="data_view">
-				<li>1</li>
+				<li>${no - idx.count + 1}</li>
 				<li style="text-align: left;" onclick="go_details('${rsv_list.aidx}','${rsv_list.aptnm}');">${rsv_list.aptnm}</li>
 				<li>${rsv_list.visit_date}</li>
 				<li>${rsv_list.visit_time}</li>

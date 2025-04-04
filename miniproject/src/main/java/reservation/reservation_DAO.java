@@ -38,6 +38,7 @@ public class reservation_DAO implements reservation_mapper  {
 		return result;
 	}
 	
+	//
 	@Override
 	public Map<String,String> rinfo_ck(reservation_DTO r_DTO) {
 		Map<String, Object> dupl_ck = new HashMap<String, Object>();
@@ -75,7 +76,15 @@ public class reservation_DAO implements reservation_mapper  {
 		return rsv_myList;
 	}
 
+	@Override
+	public int rsv_mytotal(String m_phone) {
+		int resert = this.st.selectOne("rsv_mytotal",m_phone);
+		return resert;
+	}
 
+	
+
+	//방문예약 취소 메소드
 	@Override
 	public int rsv_cancel(String m_phone, String ridx) {
 		Map<String, String> cancel_info = new HashMap<String, String>();
@@ -85,6 +94,19 @@ public class reservation_DAO implements reservation_mapper  {
 		int result = this.st.update("rsv_cancel",cancel_info);
 		return result;
 	}
+
+
+	//날짜 지난 예약건 리스트 삭제 메소드
+	@Override
+	public int check_date() {
+		int result = this.st.update("disappear_list");
+		return result;
+	}
+
+
+
+
+	
 
 
 	

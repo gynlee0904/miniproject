@@ -40,7 +40,6 @@ public class week_controller {
 							Model m) throws IOException {
 	
 		String login_yn = this.loginck.loginck();  //로그인 체크
-//		String login_yn=this.loginck.loginyes(null);
 		
 		if(login_yn.equals("no")){  //로그인 안되어있으면
 			this.msg = "alert('로그인 후 상세보기 가능합니다. \\n 로그인 해주세요!'); "
@@ -64,7 +63,7 @@ public class week_controller {
 				}else {  // 결과가 있을 때
 					reservation_DTO rsv_ck = this.r_dao.rsv_ck(mphone, aidx);  //예약여부 확인 메소드
 	
-					if(rsv_ck != null) {
+					if(rsv_ck != null) {  //예약한 건이 있으면 전송 
 						m.addAttribute("rsv_ck", rsv_ck);
 					}
 					

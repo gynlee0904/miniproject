@@ -13,5 +13,8 @@ public interface reservation_mapper {
 	Map<String,String> rinfo_ck(reservation_DTO r_DTO);
 	Map<String, String> reservation_check(String ridx);  //방문예약 내용확인 메소드
 	List<reservation_DTO> rsv_myList(String m_phone);  //방문예약리스트 확인 메소드
+	int rsv_mytotal (String m_phone);//방문예약리스트 총개수 확인
 	int rsv_cancel(String pn, String ridx);  //방문예약 취소 메소드 
+	int check_date(); //날짜 지난 예약건 리스트 삭제 메소드
 }
+
