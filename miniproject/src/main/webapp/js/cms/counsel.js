@@ -3,6 +3,7 @@ var apt_type = frm.apt_type;
 var counsel_date = frm.counsel_date;
 var counsel_content = frm.counsel_content;
 
+//상담신청 버튼 클릭시 작동
 function counsel_go(){
 	//임대형태 선택여부 확인 
 	var rental_cnt = 0;
@@ -53,8 +54,8 @@ function check_date(){
 		alert("상담받으실 날짜를 선택하세요.");
 		counsel_date.focus();
 		
-	}else if(selectedDate < today){
-		alert("오늘 이전의 날짜는 선택할 수 없습니다. 다시 선택해주세요")
+	}else if(selectedDate <= today){
+		alert("오늘 이후의 날짜만 선택할 수 있습니다. 다시 선택해주세요")
 		counsel_date.value="";  //선택날짜 초기화
 		counsel_date.focus();
 		

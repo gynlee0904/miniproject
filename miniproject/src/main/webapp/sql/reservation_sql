@@ -1,0 +1,25 @@
+create table reservation_info (
+	ridx int unsigned auto_increment comment '자동증가값',
+	aidx int unsigned not null comment '아파트고유번호',
+	visit_date varchar(10) not null comment '방문일시',
+	visit_time varchar(10) not null comment '방문시간',
+	m_name char(30) not null comment '방문자명',
+	visit_in varchar(5) not null comment '방문인원',
+	m_phone char(11) not null comment '연락처',
+	reserve_yn enum('Y','N') not null default 'Y',
+	extra1 varchar(10) comment '여분컬럼1',
+ 	extra2 varchar(10) comment '여분컬럼2',
+	insert_date timestamp not null default current_timestamp comment '가입일',
+	modyfied_date timestamp null default null comment '최종수정일',
+	primary key(ridx),
+	foreign key(aidx) references type_info (aidx),
+	foreign key(m_phone) references member (m_phone)
+);
+
+drop table reservation_info;
+
+desc reservation_info;
+select * from reservation_info;
+
+alter table reservation_info drop column apt_name;
+alter table reservation_info add column apt_name char(50) not null comment '아파트명';

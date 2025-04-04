@@ -17,8 +17,7 @@ create table type_info (
    apt_view int not null default '0' comment '조회수',
    insert_date timestamp not null default current_timestamp comment '등록일',
    modyfied_date timestamp null default null comment '최종수정일',
-   primary key(aidx), 
-   unique anm(apt_name)
+   primary key(aidx)
 );
 
 select * from type_info;
@@ -32,5 +31,8 @@ insert into type_info values ('0','청계리버뷰자이(민간분양)','서울�
 insert into type_info values ('0','제일풍경채검단IV(AA22)','세종특별시 서구 원당동 21-4','아파트','민간분양','2025.10 분양','2026.11 입주','room6.jpg','room6.jpg',null,'지역난방,열병합','800','3','(주)세담종합건설','접수',0,now(),null);
 insert into type_info values ('0','소사역롯세캐슬더뉴엘','부천시 소사본동 2가 23','아파트','민간분양','2025.10 분양','2027.03 입주','room7.jpg','room7.jpg',null,'지역난방,열병합','1200','11','(주)세담종합건설','접수',0,now(),null);
 insert into type_info values ('0','삼익더랩소디','서울시 강서구 내발산동 3-2','아파트','공공임대','2025.04 분양','2026.12 입주','room8.jpg','room8.jpg',null,'개별난방,도시가스','800','7','현대엔지니어링(주)','오픈',0,now(),null);
+
+alter table type_info drop constraint anm; 
+
 
 drop table type_info;

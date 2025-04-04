@@ -31,7 +31,8 @@ public class main_controller {
 		List<week_DTO> wk_allList = this.w_dao.wk_allList();
 		
 		//md_choice 전체 출력 메소드 
-		List<md_DTO> md_allList = this.m_dao.md_allList();
+		Integer post_ea = 4;
+		List<md_DTO> md_allList = this.m_dao.md_allList(1,post_ea);
 	
 		m.addAttribute("wk_allList", wk_allList);
 		m.addAttribute("md_allList", md_allList);
@@ -47,6 +48,9 @@ public class main_controller {
 	public void member_join() {}
 
 	
+	//(임시)추천매물 글쓰기 페이지로 이동
+	@GetMapping("/board/md_board_write.do")
+	public void md_board_write() {}
 	
 	
 	

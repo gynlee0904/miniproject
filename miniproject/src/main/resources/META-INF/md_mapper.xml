@@ -2,9 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mdchoice.md_mapper">
 
-<!-- md_choice 전체리스트 출력 -->
-<select id="md_allList" resultType="md_dto">
-	select * from md_choice order by midx desc
+<!-- md_choice(추천매물) 전체리스트 출력 -->
+<select id="md_allList" resultType="md_dto" parameterType="Map">
+	select * from md_choice order by midx desc limit #{start_p},#{post_ea}
 </select>
+
+<!-- 추천매물 전체리스트 총 개수 -->
+<select id="md_list_total" resultType="int">
+	select count(*) as cnt from md_choice
+</select>
+
+<!-- 추천매물 게시글 조회수 -->
+<update id="md_viewcnt">
+	update md_choice set md_view = md_view+1 where midx=#{midx}
+</update>
+
+<!-- 추천매물 게시글 상세보기 -->
+<select id="md_oneProduct" resultType="md_dto">
+	select * from md_choice where midx=#{midx}
+</select>
+
+<!-- 추천매물 게시글 검색 -->
+<select id="md_search_post" resultType="md_dto" parameterType="Map">
+	select * from md_choice where md_title like concat('%',#{md_search},'%') order by midx desc limit #{start_p},#{post_ea}
+</select>
+
+<!-- 추천매물 게시글 총개수 -->
+<select id="md_search_total" resultType="int" >
+	select count(*) as cnt from md_choice where md_title like concat('%',#{md_search},'%') 
+</select>
+
+<!-- 추천매물 게시판 글쓰기 -->
+<insert id="md_board_write" >
+	insert into md_choice values ('0',#{md_title},#{md_content},#{md_filenm},#{md_fileRenm},#{md_imgpath},#{md_writer},#{md_view},now(),null)
+</insert>
+
 
 </mapper>

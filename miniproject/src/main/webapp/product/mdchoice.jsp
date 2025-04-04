@@ -3,7 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%
+	Date date_md = new Date();
+	SimpleDateFormat sf_md = new SimpleDateFormat("yyMMdd");
+	String today_md = sf_md.format(date_md);
+%>
 
 <!--추천 분양 정보-->
 <section>
@@ -16,7 +20,7 @@
 				<c:forEach var="md" items="${md_allList}">
 				<li>
 					<div>
-						<img src="./md_room/${md.md_fileRenm}">
+						<img src="../md_file/${md.md_fileRenm}">
 					</div> 
 					<span>${md.md_title}</span>
 					<div>
@@ -30,4 +34,4 @@
 
 </section>
 <!--추천 분양 정보 끝-->
-<script src="../js/product/mdchoice.js?v=1"></script>
+<script src="../js/product/mdchoice.js?v=<%=today_md%>"></script>

@@ -2,30 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservation.reservation_mapper">
 
+<!-- 예약여부 확인 메소드 -->
+<select id="rsv_ck" resultType="rsv_dto">
+	select aidx, m_phone, reserve_yn from reservation_info where m_phone=#{m_phone} and aidx=#{aidx}
+</select>
+
 <!-- 방문예약 등록 -->
 <insert id="reservation_insert" >
-	insert into reservation_info values ('0',#{aidx},#{apt_name},#{visit_date},#{visit_time},#{m_name},#{visit_in},#{m_phone},'Y',null,null,now(),null)
+	insert into reservation_info values ('0',#{aidx},#{visit_date},#{visit_time},#{m_name},#{visit_in},#{m_phone},'Y',null,null,now(),null)
 </insert>
-
-<!-- 중복예약방지 -->
-<select id="dupl_ck" resultType="int">
-	select count(*) as cnt from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time}
-</select>
 
 <!--  ridx 확인 -->
 <select id="info_ck" resultType="int">
 	select ridx from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time}
 </select>
 
-<!-- 중복예약방지+ridx 확인 -->
-<!-- <select id="rinfo_ck" resultType="int"> -->
-<!-- 	select ridx, count(*) as cnt from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and visit_date=#{visit_date} and visit_time=#{visit_time} group by ridx -->
-<!-- </select> -->
 
 <!-- 방문예약 내용확인 메소드 -->
-<select id="reservation_check" resultType="rsv_dto">
-	select * from reservation_info where ridx=#{ridx}
+<select id="reservation_check" resultType="MAP">
+	select ridx, rt.aidx, apt_name as an, visit_date, visit_time, m_name, visit_in, m_phone, reserve_yn from reservation_info as rt join type_info as tt on rt.aidx = tt.aidx where ridx=#{ridx};
+<!-- 	select * from reservation_info where ridx=#{ridx} -->
 </select>
 
+<!-- 방문예약리스트 확인 메소드 -->
+<select id="rsv_myList" resultType="rsv_dto">
+	select ridx, rt.aidx, apt_name as aptnm, visit_date, visit_time, visit_in from reservation_info as rt join type_info as tt on rt.aidx = tt.aidx where m_phone=#{m_phone} and reserve_yn = 'Y' order by ridx desc
+</select>
 
+<!-- 방문예약 취소 메소드 -->
+<update id="rsv_cancel">
+	update reservation_info set reserve_yn = 'N' where ridx=#{ridx} and m_phone=#{m_phone}
+</update>
 </mapper>

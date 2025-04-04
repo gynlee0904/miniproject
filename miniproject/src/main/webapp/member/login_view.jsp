@@ -1,5 +1,12 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	Date date_lg = new Date();
+	SimpleDateFormat sf_lg = new SimpleDateFormat("yyMMdd");
+	String today_lg = sf_lg.format(date_lg);
+%>
 <main>
 <form id="frm">
 	<aside class="login_pg">
@@ -17,7 +24,7 @@
 			<input type="button" value="카카오로그인" class="kakao_btn">
 		</div>
 		<div>
-			<span ><a id="memberjoin">회원가입</a></span>
+			<span ><a id="memberjoin" href="./member_join.do">회원가입</a></span>
 			<span class="find"><a id="idsearch">이메일 찾기</a></span> 
 			<span class="find"><a id="pwsearch">비밀번호 찾기</a></span>
 		</div>
@@ -25,4 +32,4 @@
 </form>
 </main>
 
-<script src="../js/member/login.js?v=4"></script>
+<script src="../js/member/login.js?v=<%=today_lg%>"></script>

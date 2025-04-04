@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <main>
 	<div class="weektails">
 		<p>분양정보</p>
@@ -23,14 +24,21 @@
 			</ul>
 		</div>
 		
-		<div>
-			<button class="btn_css" onclick="reservation_go(${week_one.aidx},'${week_one.apt_name}');">방문예약</button>
-		</div>
+		<c:choose>
+			<c:when test="${rsv_ck.aidx==week_one.aidx && rsv_ck.m_phone==sessionScope.mphone && rsv_ck.reserve_yn == 'Y'}">
+			<div>
+				<button class="btn_close">방문예약완료</button>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<div>
+				<button class="btn_css" onclick="reservation_go(${week_one.aidx},'${week_one.apt_name}');">방문예약</button>
+			</div>
+			</c:otherwise>
+		</c:choose>
 		
-		<div>
-			<button class="btn_close">방문예약완료</button>
-		</div>
+		
 	</div>
 </main>
 
-<script src="../js/product/week.js?v=3"></script>
+<script src="../js/product/week.js?v=4"></script>

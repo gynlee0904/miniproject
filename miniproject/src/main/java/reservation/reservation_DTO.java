@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class reservation_DTO {
 	int ridx, aidx;
-	String apt_name, visit_date, visit_time, m_name, visit_in, m_phone;
+	String visit_date, visit_time, m_name, visit_in, m_phone,reserve_yn;
 	String insert_date, modyfied_date;
+	
+	String aptnm;  //아파트 이름 
 }
