@@ -21,8 +21,8 @@ function go_counsel() {
 
 //방문예약 확인 리스트로 이동.
 function reserve_page() {
-//	location.href = "../board/reservation_list.do";
-	location.href = "./reservation_list.do";
+	location.href = "../board/reservation_list.do";
+//	location.href = "./reservation_list.do";
 }
 
 

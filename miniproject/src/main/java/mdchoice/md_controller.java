@@ -119,7 +119,7 @@ public class md_controller  {
 		
 		this.result = this.m_dao.md_board_write(m_dto);
 		if(this.result > 0) {  //글 등록 완료 
-			this.msg = "alert('추천분양 정보 게시판 게시물이 추가 되었습니다'); location.href='./md_board.do';";
+			this.msg = "alert('추천분양 정보 게시판 게시물이 추가 되었습니다'); location.href='../board/md_board.do';";
 			
 		}else {  //등록 실패 
 			this.msg = "alert('시스템 문제로 글 등록에 실패했습니다 \\n 관리자에게 문의해주세요.'); history.go(-1);";

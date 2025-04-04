@@ -120,11 +120,11 @@ function member_join(){
 		mname.focus();
 	}
 	else if(phone.value==""){
-		alert("연락처를 입력해주세요.");
+		alert("휴대폰번호를 입력해주세요.");
 		phone.focus();
 	}
 	else if(!reg_pn.test(phone.value)){
-		alert("연락처를 다시 확인해주세요 \n 숫자만 입력해야합니다.");
+		alert("휴대폰번호를 정확하게 입력해주세요.");
 		phone.focus();
 	}
 	else {

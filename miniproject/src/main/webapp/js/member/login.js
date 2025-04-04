@@ -28,5 +28,5 @@ idsearch.addEventListener("click", function() {
 
 //비밀번호찾기 클릭시 작동 
 pwsearch.addEventListener("click", function() {
-    pwsearch.href = "./passwd_search.do"; 
+    pwsearch.href = "../member/passwd_search.do"; 
 });

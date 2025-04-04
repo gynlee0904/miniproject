@@ -5,24 +5,24 @@ create table md_choice(
 	md_filenm text comment '이미지명',
 	md_fileRenm varchar(100) comment '리네임이미지명',
 	md_imgpath text comment '이미지경로',
-	md_link text comment '링크경로',
+	md_writer varchar(20) not null comment '작성자', 
 	md_view int not null default '0' comment '조회수',
 	insert_date timestamp not null default current_timestamp comment '등록일',
 	modyfied_date timestamp null default null comment '최종수정일',
-	primary key(midx),
-	unique mnm(md_title)
+	primary key(midx)
 );
 
 select * from md_choice;
 select * from md_choice order by midx desc
 
-insert into md_choice values ('0','도심속에코라이프입지<br>‘군산레이크시티아이파크’','레이크라이프누릴수있는프리미엄조경에<br>입주민라이프스타일맞춤형평면설계까지','md_1.jpg','md_1.jpg','null','https://www.r114.com/?_c=lots&_m=lotsnews&_a=newsdetail&bno=70&kind=0&search_keyword=&search_writer=&search_addr1=&search_addr2=&search_addr3=&sort=1&sort2=down&page=1&num=14428','0',now(),null);
-insert into md_choice values ('0','청주가경아이파크6단지<br>합리적인분양가!','브랜드시티의중심<br>중대형중심의공간특화!','md_2.jpg','md_2.jpg','null','https://www.r114.com/?_c=lots&_m=lotsnews&_a=newsdetail&bno=70&kind=0&search_keyword=&search_writer=&search_addr1=&search_addr2=&search_addr3=&sort=1&sort2=down&page=1&num=14430','0',now(),null);
-insert into md_choice values ('0','풍부한중심생활인프라<br>보문센트럴아이파크','보문역초역세권<br>성북천의쾌적한힐링라이프','md_3.jpg','md_3.jpg','null','https://www.r114.com/?_c=lots&_m=lotsnews&_a=newsdetail&bno=70&kind=0&search_keyword=&search_writer=&search_addr1=&search_addr2=&search_addr3=&sort=1&sort2=down&page=1&num=14426','0',now(),null);
-insert into md_choice values ('0','서산첫아이파크<br>‘서산센트럴아이파크’','도보로누리는안심통학권<br>최고29층,서산의랜드마크','md_4.jpg','md_4.jpg','null','https://www.r114.com/?_c=lots&_m=lotsnews&_a=newsdetail&bno=70&kind=0&search_keyword=&search_writer=&search_addr1=&search_addr2=&search_addr3=&sort=1&sort2=down&page=1&num=14429','0',now(),null);
+insert into md_choice values ('0','도심속에코 라이프입지<br>‘군산 레이크시티 아이파크’','레이크 라이프 누릴 수 있는 프리미엄 조경에<br>입주민 라이프스타일 맞춤형 평면 설계까지','md_1.jpg','md_1.jpg','null','관리자','0', now(),null);
+insert into md_choice values ('0','청주 가경 아이파크 6단지 <br> 합리적인 분양가!','브랜드 시티의 중심 <br> 중대형 중심의 공간 특화!','md_2.jpg','md_2.jpg','null','관리자','0', now(),null);
+insert into md_choice values ('0','풍부한 중심생활 인프라<br>‘보문 센트럴 아이파크’','보문역 초역세권<br>성북천의 쾌적한 힐링 라이프','md_3.jpg','md_3.jpg','null','관리자','0', now(),null);
+insert into md_choice values ('0','서산 첫 아이파크<br>‘서산 센트럴 아이파크’','도보로 누리는 안심 통학권<br>최고 29층, 서산의 랜드마크','md_4.jpg','md_4.jpg','null','관리자','0', now(),null);
 
 update md_choice set md_fileRenm = 'md_1.jpg' where midx = '1';
 
 
+delete from md_choice;
 
 drop table md_choice;

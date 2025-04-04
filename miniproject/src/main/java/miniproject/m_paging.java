@@ -24,6 +24,7 @@ public class m_paging {
 	}
 	
 	
+	//쿼리문 limit에 값 전달
 	public Map<String, Object> paging (Integer pageno, Integer post_ea)  {
 		/* 1p 클릭 => limit 0,10
 		   2p 클릭 => limit 10,10

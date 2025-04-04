@@ -3,10 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	Date date_es = new Date();
-	SimpleDateFormat sf_es = new SimpleDateFormat("yyMMdd");
-	String today_es = sf_es.format(date_es);
+	Date date1 = new Date();
+	SimpleDateFormat sf1 = new SimpleDateFormat("yyMMdd");
+	String today1 = sf1.format(date1);
 %>
+
 <form id="frm">
 <main>
 	<section class="sub">
@@ -30,4 +31,4 @@
 	</section>
 </main>
 </form>
-<script src="../js/member/info_search.js?v=<%=today_es%>"></script>
+<script src="../js/member/info_search.js?v=<%=today1%>"></script>

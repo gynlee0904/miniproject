@@ -2,11 +2,7 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	Date date_lg = new Date();
-	SimpleDateFormat sf_lg = new SimpleDateFormat("yyMMdd");
-	String today_lg = sf_lg.format(date_lg);
-%>
+
 <main>
 <form id="frm">
 	<aside class="login_pg">
@@ -32,4 +28,4 @@
 </form>
 </main>
 
-<script src="../js/member/login.js?v=<%=today_lg%>"></script>
+<script src="../js/member/login.js?v=1"></script>
