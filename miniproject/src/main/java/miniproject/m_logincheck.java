@@ -29,18 +29,37 @@ public class m_logincheck {
 		String mname = (String)this.se.getAttribute("mname");
 		String mphone = (String)this.se.getAttribute("mphone");
 		
-		System.out.println(mid);
-		System.out.println(mname);
-		System.out.println(mphone);
-
-		if(mid==null || mname==null || mphone==null ) {
+		if(mid==null || mname==null || mphone==null) {
 			this.msg = "no";
+			
 		}
 		else {
+			
 			this.msg = "ok";
 		}
+		
+		System.out.println("lgin.msg : "+this.msg);
 		return this.msg;
 	}
+	
+	//관리자
+	public String adminck() {
+ 
+		String admin_yn = (String)this.se.getAttribute("admin_yn");
+
+		if(admin_yn != null && admin_yn.equals("adms")){
+			this.msg = "adm";
+			
+		}else {
+			
+			this.msg = "no";
+		}
+		System.out.println("this.admin_yn : "+admin_yn);
+		System.out.println("adm.msg : "+this.msg);
+		return this.msg;
+	}
+	
+	
 	
 //	public String loginyes()  {
 //		String login_yn = this.loginck();

@@ -39,4 +39,28 @@ public class m_paging {
 		
 		return page;
 	}
+	
+	//페이지개수
+	public Map<String, Object> page_ea (Integer pageno, Integer post_ea, Integer total_post)  {
+		//pageno : 현재 페이지 번호 , post_ea :한페이지당 보여줄 게시물 개수 , total_post : 전체게시물 개수  
+		
+		int page_ea = 5; //한페이지에 보여줄 페이징의 갯수
+		int page_ea_total;  //총 페이지 개수 
+		int start_pg;
+		int end_pg;
+		
+		page_ea_total = (int) Math.ceil((double) total_post / post_ea); 
+		
+		//1~5, 6~10, 11~
+		start_pg = (((pageno -1) / page_ea)* page_ea )+1;
+		end_pg = Math.min(start_pg+(page_ea - 1), page_ea_total);	
+				
+		Map<String, Object> pageinfo = new HashMap<String, Object>(); 
+		pageinfo.put("page_ea_total" , page_ea_total);  
+		pageinfo.put("page_ea" , page_ea);  
+		pageinfo.put("start_pg" , start_pg);  
+		pageinfo.put("end_pg" , end_pg); 
+		
+		return pageinfo;
+	}
 }

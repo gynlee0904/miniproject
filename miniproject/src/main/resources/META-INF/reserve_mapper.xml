@@ -25,12 +25,12 @@
 
 <!-- 내 방문예약리스트 확인 메소드 -->
 <select id="rsv_myList" resultType="rsv_dto">
-	select ridx, rt.aidx, apt_name as aptnm, visit_date, visit_time, visit_in from reservation_info as rt join type_info as tt on rt.aidx = tt.aidx where m_phone=#{m_phone} and reserve_yn = 'Y' order by visit_date, visit_time
+	select ridx, rt.aidx, apt_name as aptnm, visit_date, visit_time, visit_in from reservation_info as rt join type_info as tt on rt.aidx = tt.aidx where m_phone=#{m_phone} and reserve_yn = 'Y' and time_out = 'N' order by visit_date, visit_time
 </select>
 
 <!-- 내 방문예약리스트 총개수 확인  -->
 <select id="rsv_mytotal" resultType="int">
-	select count(*) as cnt from reservation_info where m_phone=#{m_phone} and reserve_yn = 'Y'
+	select count(*) as cnt from reservation_info where m_phone=#{m_phone} and reserve_yn = 'Y' and time_out = 'N'
 </select>
 
 <!-- 방문예약 취소 메소드 -->

@@ -2,16 +2,14 @@
     pageEncoding="UTF-8"%>
 <%
 	Date date_css = new Date();
-	SimpleDateFormat sf_css = new SimpleDateFormat("yyMMdd");
-	String today_css = sf_css.format(date_css);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>추천분양 정보 게시판</title>
-<link rel="stylesheet" type="text/css" href="../css/index.css?v=<%=today_css%>">
-<link rel="stylesheet" type="text/css" href="../css/board/md_board_view.css?v=<%=today_css%>">
+<link rel="stylesheet" type="text/css" href="../css/index.css?v=<%=date_css%>">
+<link rel="stylesheet" type="text/css" href="../css/board/md_board_view.css?v=<%=date_css%>">
 <style>
 .box {
    width: 800px;

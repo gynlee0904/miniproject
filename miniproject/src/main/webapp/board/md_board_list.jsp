@@ -38,7 +38,7 @@
 					</c:choose>
 				</li>
 							
-				<li>${md_list.md_writer}</li>
+				<li>관리자</li>
 				<li>${md_list.md_view}</li>
 				<li>${fn:substring(md_list.insert_date,0,10)}</li>
 			</ul>
@@ -50,12 +50,41 @@
 		
 		<!-- 페이징 -->
 		<c:set var="pgidx" value="${list_total / 10 + (1-(list_total/10)%1)%1}" />
-		
+		<c:set var="cur_pg" value="${pageno}" />
 		<div class="info_pageing">
 			<ol>
-			<c:forEach var="no" begin="1" end="${pgidx}"> 
-				<li onclick="go_page('${keyword}','${no}')">${no}</li>
-			</c:forEach>
+			
+<%-- 				<c:if test="${pgidx == 1}"> --%>
+<!-- 				<li>1</li> -->
+<%-- 				</c:if>	 --%>
+						
+				
+				
+				<c:if test="${paging.start_pg!=1 && cur_pg>1}">
+				<li onclick="go_page('${keyword}','1')"> << </li>
+				<li onclick="go_page('${keyword}','${paging.start_pg -1}')"> < </li>
+				</c:if>
+				
+<%-- 				<c:forEach var="no" begin="1" end="${pgidx}">  --%>
+				<c:forEach var="no" begin="${paging.start_pg}" end="${paging.end_pg}"> 
+				<c:choose>
+	                <c:when test="${cur_pg == no}">
+	                	<li onclick="go_page('${keyword}','${no}')" style="color: #FF6600">${no}</li>
+	                </c:when>
+	                <c:otherwise>
+	                    <li onclick="go_page('${keyword}','${no}')" >${no}</li>
+	                </c:otherwise>
+            	</c:choose>
+				
+				
+				</c:forEach>
+				
+				<c:if test="${paging.end_pg!=pgidx && cur_pg < pgidx}">
+				<li onclick="go_page('${keyword}','${paging.end_pg +1}')"> > </li>
+				<li onclick="go_page('${keyword}','${paging.page_ea_total}')"> >> </li>
+				</c:if>
+				
+				
 			</ol>
 		</div>
 		

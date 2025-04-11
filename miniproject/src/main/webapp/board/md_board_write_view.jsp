@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <form id="frm">
 <main>
 	<section class="sub">
@@ -10,14 +12,16 @@
 				<li>제&nbsp;&nbsp;&nbsp;목</li>
 				<li><input type="text" class="board_in2" name="md_title"></li>
 				<li>글쓴이</li>
-				<li><input type="text" class="board_in1" name="md_writer" value="관리자" readonly></li>
+				<li><input type="text" class="board_in1"  value="관리자" readonly></li>
 				<li>썸네일 이미지</li>
 				<li><input type="file" name="thumbImg" accept="image/*"></li>
 				<li class="litext">내&nbsp;&nbsp;&nbsp;용</li>
 				<li class="litext"><textarea id="board_text" name="md_content"></textarea></li>
 			</ul>
+			<input type="hidden" name="md_writer" value="${aname}"> 
 		</div>
 		<div class="board_btn">
+			<div></div>
 			<input type="button" value="등&nbsp;&nbsp;&nbsp;록" class="btns" onclick="insert_mdchoice();">
 		</div>
 	</section>

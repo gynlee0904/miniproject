@@ -2,13 +2,16 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	Date member_join = new Date();
+%>
 <main>
 	<form id="f" method="post">
 		<p>이메일로 회원가입</p>
 		<div>
 			<a>이메일</a> 
 			<input type="text" placeholder=" 이메일 주소를 입력해주세요." autocomplete="none" style="width: 400px; float: left;" name="m_email" id="email"> 
+			<input type="hidden" id="eml_ckok" value="" >
 			<input type="button" value="중복체크" class="mail_btn" onclick="email_ck();">
 		</div>
 		<div>
@@ -62,4 +65,4 @@
 		</div>
 	</form>
 </main>
-<script src="../js/member/member_join.js?v=1"></script>
+<script src="../js/member/member_join.js?v=<%=member_join%>"></script>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,8 @@ import miniproject.m_encry;
 @CrossOrigin(origins="*", allowedHeaders = "*")
 @Controller
 public class member_controller extends m_encry{
+	@Autowired HttpSession session;
+	
 	@Resource(name="memberDAO") private member_DAO m_dao;
 	@Resource(name="memberDTO") private member_DTO m_dto;
 	
@@ -97,8 +100,7 @@ public class member_controller extends m_encry{
 	//로그인 메소드 
 	@PostMapping("/member/login_ok.do")
 	public String login_ok(member_DTO m_dto, HttpServletRequest req, Model m) throws Exception {
-		HttpSession session = null;
-		
+			
 		String mid = m_dto.m_email;  //사용자 입력 id
 		String mpw = m_dto.m_pass;  //사용자 입력 pw
 		
@@ -118,11 +120,11 @@ public class member_controller extends m_encry{
 			String mname = loginMember.m_name;		
 			String mphone = loginMember.m_phone;
 
-			session = req.getSession();
+//			this.session = req.getSession();
 
-			session.setAttribute("mid", mid);  //이메일  
-			session.setAttribute("mname", mname);  //이름
-			session.setAttribute("mphone", mphone);  //연락처
+			this.session.setAttribute("mid", mid);  //이메일  
+			this.session.setAttribute("mname", mname);  //이름
+			this.session.setAttribute("mphone", mphone);  //연락처
 			
 			this.msg="alert('"+mname+"님 환영합니다!'); "
 					+ "location.href='../index.do';";
@@ -140,8 +142,12 @@ public class member_controller extends m_encry{
 	@GetMapping("/member/logout.do")
 	public String logout(HttpServletRequest req, Model m) {
 		
-		HttpSession session = req.getSession();
-		session.invalidate(); //세션에 저장된 정보들 파기 
+//		HttpSession session = req.getSession();
+//		session.invalidate(); //세션에 저장된 정보들 파기 
+		
+		this.session.removeAttribute("mid");
+		this.session.removeAttribute("mname");
+		this.session.removeAttribute("mphone");  //일반회원 정보만 파기 
 		
 		this.msg="alert('로그아웃 되었습니다.'); "
 				+ "location.href='../index.do';";

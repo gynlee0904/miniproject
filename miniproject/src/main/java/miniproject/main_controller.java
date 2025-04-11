@@ -20,8 +20,11 @@ public class main_controller {
 	PrintWriter pw = null;
 	@Resource(name="wkDAO") week_DAO w_dao;
 	@Resource(name="mdDAO") md_DAO m_dao;
+	@Resource(name="loginck") m_logincheck loginck;  //로그인체크 모델 
 	
 	String msg = "";
+	String url = null;
+	
 	
 	//메인페이지로 접속 
 	@GetMapping("/index.do")
@@ -41,11 +44,27 @@ public class main_controller {
 	
 	//로그인페이지로 이동
 	@GetMapping("/member/login.do")
-	public void login() {}
+	public String login(Model m) {
+		String login_yn = this.loginck.loginck();  //로그인 체크
+		if(login_yn.equals("ok")){  //로그인 이미 되어있으면
+			this.msg="alert('이미 로그인 되어있습니다.'); history.go(-1);";
+			m.addAttribute("msg",this.msg);
+			this.url="/common/alert_msg";
+		}	
+		return this.url;
+	}
 	
 	//회원가입 페이지로 이동
 	@GetMapping("/member/member_join.do")
-	public void member_join() {}
+	public String member_join(Model m) {
+		String login_yn = this.loginck.loginck();  //로그인 체크
+		if(login_yn.equals("ok")){  //로그인 이미 되어있으면
+			this.msg="alert('이미 로그인 되어있습니다.'); history.go(-1);";
+			m.addAttribute("msg",this.msg);
+			this.url="/common/alert_msg";
+		}	
+		return this.url;
+	}
 
 	
 	//(임시)추천매물 글쓰기 페이지로 이동

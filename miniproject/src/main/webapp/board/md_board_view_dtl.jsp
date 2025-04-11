@@ -22,11 +22,14 @@
 				</li>
 				
 				<li>글쓴이</li>
-				<li>${md_one.md_writer}</li>
+				<li> 관리자 </li>
+				
 				<li>등록일</li>
 				<li>${fn:substring(md_one.insert_date,0,10)}</li>
+				
 				<li>조회수</li>
 				<li>${md_one.md_view}</li>
+				
 				<li class="litext">내&nbsp;&nbsp;&nbsp;용</li>
 				<li class="litext">
 					<div class="textarea">
@@ -39,8 +42,16 @@
 			</ul>
 		</div>
 		<div class="board_btn">
+			
+			<div>
+			<c:if test="${adminck == 'adm'}">
+			<input type="button" value="수&nbsp;&nbsp;&nbsp;정" class="btns" onclick="">
+			<input type="button" value="삭&nbsp;&nbsp;&nbsp;제" class="btns" onclick="">
+			</c:if>
+			</div>
+			
 			<input type="button" value="목&nbsp;&nbsp;&nbsp;록" class="btns" onclick="go_rcm_pd()">
 		</div>
 	</section>
 </main>
-<script src="../js/top.js?v=2"></script>
+<script src="../js/top.js?v=3"></script>

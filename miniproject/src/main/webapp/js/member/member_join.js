@@ -1,4 +1,5 @@
-var email = document.getElementById("email");
+var email = f.m_email;
+var eml_ckok = document.getElementById("eml_ckok");
 var pw = f.m_pass;
 var pw_ck = document.getElementById("m_pass_ck");
 var mname = f.m_name;
@@ -46,11 +47,10 @@ function ajax_idcheck(email){
 		if(http.readyState == 4 && http.status == 200){
 			console.log(this.response)
 			if(this.response=="ok"){
-//				setTimeout(function(){	
-					alert("해당 이메일은 사용가능합니다");
-					f.m_email.readOnly = true; 
-					f.m_email.style.backgroundColor = "#ccc" 
-//				},2000);
+				alert("해당 이메일은 사용가능합니다");
+				f.m_email.readOnly = true; 
+				f.m_email.style.backgroundColor = "#ccc" 
+				eml_ckok.value="ok"	
 			}else {
 				alert("해당 이메일은 이미 가입중입니다");
 				f.m_email.value = "";  //입력값 초기화 
@@ -95,7 +95,18 @@ function agree_ck(){
 
 //회원가입버튼 누르면 작동
 function member_join(){
-	if(pw.value==""){
+	if(email.value==""){
+		alert("이메일을 입력해주세요.");
+		email.focus();
+	}
+	else if(!reg_eml.test(email.value)){
+		alert("이메일을 정확하게 입력해주세요.");
+		email.focus();
+	}
+	else if(eml_ckok.value !="ok"){
+		alert("이메일 중복 체크를 해주세요.");
+	}
+	else if(pw.value==""){
 		alert("패스워드를 입력해주세요.");
 		pw.focus();
 	}

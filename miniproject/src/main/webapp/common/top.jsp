@@ -6,8 +6,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Date date_top = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyMMdd");
-	String today_top = sf.format(date_top);
 %>
 <!--최상단-->
 <header>
@@ -24,7 +22,7 @@
 			<li>중계의뢰</li>
 			<li onclick="go_counsel();">상담신청</li>
 			<li>업체의뢰</li>
-			<li onclick="location.href='../board/md_board_write.do';">의뢰현황</li>
+			<li onclick="go_write();">의뢰현황</li>
 			<li class="logins" onmouseleave="myinfo_menu(2)">
 				<span title="회원정보" onclick="myinfo_menu(1)"> 
 				<img src="../ico/login.svg">
@@ -47,4 +45,4 @@
 	</div>
 </nav>
 <!--메뉴끝-->
-<script src="../js/top.js?v=<%=today_top%>"></script>
+<script src="../js/top.js?v=<%=date_top%>"></script>

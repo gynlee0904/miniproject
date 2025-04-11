@@ -11,11 +11,17 @@ function go_main() {
 //추천매물 메뉴 클릭시 작동 
 function go_rcm_pd() {
 	location.href = "../board/md_board.do";
+//	location.href = "./md_board.do";
 }
 
 //상담신청 메뉴 클릭시 작동 
 function go_counsel() {
 	location.href = "../cms/counsel.do";
+}
+
+//추천매물 글쓰기 이동 
+function go_write() {
+	location.href = "../board/md_board_write.do";
 }
 
 
