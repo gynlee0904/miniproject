@@ -21,7 +21,7 @@
 			<input type="hidden" name="md_writer" value="${aname}"> 
 		</div>
 		<div class="board_btn">
-			<div></div>
+			<input type="button" value="등록취소" class="btns" onclick="mdchoice_list();">
 			<input type="button" value="등&nbsp;&nbsp;&nbsp;록" class="btns" onclick="insert_mdchoice();">
 		</div>
 	</section>
@@ -34,4 +34,4 @@
 	</script>
 </main>
 </form>
-<script src="../js/board/md_board.js?v=3"></script>
+<script src="../js/board/md_board.js?v=5"></script>

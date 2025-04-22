@@ -27,6 +27,7 @@ public class m_file {
 		f_dto.setFilenm(thumbImg.getOriginalFilename());  // 원래파일명 dto에 저장 
 		
 		String filePath = req.getServletContext().getRealPath(savePath);
+		System.out.println(filePath);
 		
 		File dir = new File(filePath);		
 		if (!dir.exists()) { //해당 경로가 없을경우
@@ -35,7 +36,6 @@ public class m_file {
 		
 		FileCopyUtils.copy(thumbImg.getBytes(),new File(filePath+this.file_rnm));  //웹디렉톨에 리네임한 파일명으로 저장 
 		f_dto.setImgPath(savePath+this.file_rnm);  //웹디렉토리 경로+리네임 파일명 dto에 저장
-		
 		
 		return f_dto;
 	}
@@ -55,5 +55,20 @@ public class m_file {
 		String makeFileRenm = today+no+ext;
 
 		return makeFileRenm;
+	}
+	
+	
+	//웹디렉토리 실제 파일 삭제 
+	public boolean file_delete(String filenm, HttpServletRequest req, String savePath) {
+		String url = req.getServletContext().getRealPath(savePath);
+		File file = new File(url+filenm);
+		boolean result = false;
+		if(file.exists()) {  //해당 파일이 있으면 삭제 
+			result = file.delete();
+		}
+		else {  //없으면 => 없어도 글 삭제  
+			result = true;
+		}
+		return result;
 	}
 }

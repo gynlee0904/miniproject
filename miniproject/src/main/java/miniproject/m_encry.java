@@ -2,7 +2,10 @@ package miniproject;
 
 import java.security.MessageDigest;
 
-public abstract class m_encry {
+import org.springframework.stereotype.Repository;
+
+@Repository("m_encry")
+public class m_encry {
 	public String md5_make(String pw) {
 		StringBuilder sb = new StringBuilder();
 		try {

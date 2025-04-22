@@ -19,7 +19,7 @@
 		<div class="md_estates">
 			<ul>
 				<c:forEach var="md" items="${md_allList}">
-				<li>
+				<li onclick="go_md_detail('${md.midx}')">
 					<div>
 						<img src="../md_file/${md.md_fileRenm}">
 					</div> 
@@ -35,4 +35,4 @@
 
 </section>
 <!--추천 분양 정보 끝-->
-<script src="../js/product/mdchoice.js?v=<%=today_md%>"></script>
+<script src="../js/product/mdchoice.js?v=2"></script>

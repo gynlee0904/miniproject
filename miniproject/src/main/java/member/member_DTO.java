@@ -13,5 +13,7 @@ public class member_DTO {
 	String m_email, m_pass, m_name, m_phone;
 	String m_agr1, m_agr2, m_agr3, m_agr4;
 	String insert_date, modified_date; 
+	String m_type;
+	String kakao_id;
 
 }

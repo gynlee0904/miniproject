@@ -40,39 +40,37 @@ public class week_controller {
 							Model m) throws IOException {
 	
 		String login_yn = this.loginck.loginck();  //로그인 체크
+		String admin_yn = this.loginck.adminck();  //관리자여부 체크
+		String url = null;
 		
-		if(login_yn.equals("no")){  //로그인 안되어있으면
-			this.msg = "alert('로그인 후 상세보기 가능합니다. \\n 로그인 해주세요!'); "
-								+ "location.href='../member/login.do';";
+		if(login_yn.equals("ok") || admin_yn.equals("adm")){  //로그인 되어있으면
+			week_DTO week_one = this.w_dao.week_one(aidx, apt_name);
 			
-			m.addAttribute("msg", this.msg);
-			return "/common/alert_msg";
+			if(week_one.equals(null)) {  //일치하는 결과값이 없을때
+				
+				this.msg = "alert('시스템문제가 발생했습니다 \\n 관리자에게 문의하세요'); history.go(-1);";
+				url = "/common/alert_msg";
+				
+			}else {  // 결과가 있을 때
+				reservation_DTO rsv_ck = this.r_dao.rsv_ck(mphone, aidx);  //예약여부 확인 메소드
+				
+				if(rsv_ck != null) {  //예약한 건이 있으면 전송 
+					m.addAttribute("rsv_ck", rsv_ck);
+				}
+				
+				m.addAttribute("week_one", week_one);
+			}		
 			
 		}
-		else {  //로그인 되어있으면 상품페이지로 이동
-			String url = null;
-			if(login_yn.equals("ok")) {
-				
-				week_DTO week_one = this.w_dao.week_one(aidx, apt_name);
-				
-				if(week_one.equals(null)) {  //일치하는 결과값이 없을때
-					
-					this.msg = "alert('시스템문제가 발생했습니다 \\n 관리자에게 문의하세요'); history.go(-1);";
-					url = "/common/alert_msg";
-				
-				}else {  // 결과가 있을 때
-					reservation_DTO rsv_ck = this.r_dao.rsv_ck(mphone, aidx);  //예약여부 확인 메소드
-	
-					if(rsv_ck != null) {  //예약한 건이 있으면 전송 
-						m.addAttribute("rsv_ck", rsv_ck);
-					}
-					
-					m.addAttribute("week_one", week_one);
-					
-				}		
-			}
-			return url;
+		else {  //로그인 안되어있을 경우
+			this.msg = "alert('로그인 후 상세보기 가능합니다. \\n 로그인 해주세요!'); "
+					+ "location.href='../member/login.do';";
+			
+			m.addAttribute("msg", this.msg);
+			url =  "/common/alert_msg";
+			
 		}	
+		return url;
 
 	}
 	

@@ -4,7 +4,7 @@
  
 <!-- 회원가입 -->
 <insert id="member_insert" >
-	insert into member values ('0',#{m_email},#{m_pass},#{m_name},#{m_phone},#{m_agr1},#{m_agr2},#{m_agr3},#{m_agr4},now(),null)
+	insert into member values ('0',#{m_email},#{m_pass},#{m_name},#{m_phone},#{m_agr1},#{m_agr2},#{m_agr3},#{m_agr4},#{m_type},#{kakao_id},now(),null)
 </insert>
 
 <!-- 아이디 중복체크 -->
@@ -19,7 +19,35 @@
 
 <!-- 로그인 -->
 <select id="member_login" resultType="member_dto" parameterType="Map">
-	select m_email, m_name, m_phone from member where m_email=#{m_email} and m_pass=#{m_pass}
+	select m_email, m_name, m_phone, m_type from member 
+	<choose>
+		<when test="part=='web_login'">  <!-- 일반 로그인 할때 -->
+			where m_email=#{m_email} and m_pass=#{m_pass} and m_type = 'WEB'
+		</when>
+		<when test="part=='kakao_login'"> <!-- 카카오로그인 -->
+			where kakao_id = #{kakao_id} and m_type = 'KAKAO'
+		</when>
+		<when test="part=='member_info'"> <!-- 마이페이지 볼때 -->
+			where m_email = #{m_email} 
+		</when>
+		<otherwise>  <!-- 전체회원 리스트 출력시 -->
+			order by midx desc
+		</otherwise>
+	</choose>
+</select>
+
+<!-- 가입 형태 확인  -->
+<select id="mtypeck" resultType="String" parameterType="Map">
+	select m_type from member 
+	<choose>
+		<when test="part=='idsearch'">  <!-- 아이디찾기할때 -->
+			where m_name=#{m_name} and m_phone=#{m_phone}
+		</when>
+		<when test="part=='pwsearch'"> <!-- 비번찾기할때  -->
+			where m_email=#{m_email} and m_phone=#{m_phone}
+		</when>
+	</choose>
+	
 </select>
 
 <!-- 아이디 찾기 -->

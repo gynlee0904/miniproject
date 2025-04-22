@@ -4,7 +4,7 @@
 
 <!-- 예약여부 확인 메소드 -->
 <select id="rsv_ck" resultType="rsv_dto">
-	select aidx, m_phone, reserve_yn from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and reserve_yn = 'Y'
+	select aidx, m_phone, reserve_yn from reservation_info where m_phone=#{m_phone} and aidx=#{aidx} and reserve_yn = 'Y' and time_out = 'N'
 </select>
 
 <!-- 방문예약 등록 -->

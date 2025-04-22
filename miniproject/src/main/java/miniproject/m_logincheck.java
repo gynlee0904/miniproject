@@ -20,7 +20,7 @@ public class m_logincheck {
 	HttpSession se;
 	
 	String msg = "";
-	String url = null;
+	
 	
 	PrintWriter pw = null;
 	
@@ -61,21 +61,7 @@ public class m_logincheck {
 	
 	
 	
-//	public String loginyes()  {
-//		String login_yn = this.loginck();
-//		System.out.println("로그인여부 : "+login_yn);
-//		
-//		if(login_yn.equals("no")) {
-//			this.msg="";
-//
-//		} else {
-//			this.msg = "ok";
-//			
-//		}
-//		return this.msg;
-//		
-//	}
-	
+
 	
 	
 }

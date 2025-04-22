@@ -33,7 +33,7 @@
 							</c:when>
 							
 							<c:otherwise>
-							<li>${mname}님 <a href="../member/logout.do">[로그아웃]</a></li>
+							<li>${mname}님 <a href="javascript:member_logout()">[로그아웃]</a></li>
 							</c:otherwise>
 						</c:choose>
 					</ul>
@@ -45,4 +45,5 @@
 	</div>
 </nav>
 <!--메뉴끝-->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.js"></script>
 <script src="../js/top.js?v=<%=date_top%>"></script>

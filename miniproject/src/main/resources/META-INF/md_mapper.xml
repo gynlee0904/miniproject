@@ -8,8 +8,27 @@
 </select>
 
 <!-- 추천매물 전체리스트 총 개수 -->
-<select id="md_list_total" resultType="int">
+<select id="md_list_total" resultType="int" parameterType="Map">
 	select count(*) as cnt from md_choice
+	<choose>
+		<when test="part=='yesterday'">
+		where date(insert_date) = date_sub(curdate(), interval 1 day)
+		</when>
+		<when test="part=='today'">
+		where date(insert_date) = curdate()
+		</when>
+		<when test="part=='lastweek'">  <!-- 지난주 등록된 게시글 총개수 -->
+		where yearweek(date(insert_date), 1) = yearweek(curdate(), 1)-1
+		</when>
+		<when test="part=='thisweek'">  <!-- 이번주 등록된 게시글 총개수 -->
+		where yearweek(date(insert_date), 1) = yearweek(curdate(), 1)
+		</when>
+		<when test="part=='search'"> <!-- 검색 후 게시글 총개수 -->
+		where md_title like concat('%',#{md_search},'%')
+		</when>
+		<when test="part==total"></when>
+	</choose>
+	
 </select>
 
 <!-- 추천매물 게시글 조회수 -->
@@ -27,15 +46,28 @@
 	select * from md_choice where md_title like concat('%',#{md_search},'%') order by midx desc limit #{start_p},#{post_ea}
 </select>
 
-<!-- 추천매물 게시글 총개수 -->
-<select id="md_search_total" resultType="int" >
-	select count(*) as cnt from md_choice where md_title like concat('%',#{md_search},'%') 
-</select>
+<!-- 추천매물 검색 총개수 -->
+<!-- <select id="md_search_total" resultType="int" > -->
+<!-- 	select count(*) as cnt from md_choice where md_title like concat('%',#{md_search},'%')  -->
+<!-- </select> -->
 
 <!-- 추천매물 게시판 글쓰기 -->
 <insert id="md_board_write" >
 	insert into md_choice values ('0',#{md_title},#{md_content},#{md_filenm},#{md_fileRenm},#{md_imgpath},#{md_writer},#{md_view},now(),null)
 </insert>
 
+<!-- 추천매물 게시물 삭제 -->
+<delete id="md_board_delete" >
+	delete from md_choice where midx=#{midx}
+</delete>
+
+<!-- 추천매물 게시글 수정 -->
+<update id="md_modify" parameterType="md_dto">
+	update md_choice set md_title = #{md_title}, md_content = #{md_content}, md_writer=#{md_writer}, 
+	<if test="md_filenm != null">
+	md_filenm = #{md_filenm}, md_fileRenm=#{md_fileRenm}, md_imgpath=#{md_imgpath},
+	</if>
+	modyfied_date = now() where midx=#{midx}
+</update>
 
 </mapper>

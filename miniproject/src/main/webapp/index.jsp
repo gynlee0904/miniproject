@@ -3,8 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	Date date_idx = new Date();
-	SimpleDateFormat sf_idx = new SimpleDateFormat("yyMMdd");
-	String today_idx = sf_idx.format(date_idx);
 %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +10,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>온라인 부동산 중개</title>
-  <link rel="stylesheet" type="text/css" href="./css/index.css?v=<%=today_idx+1%>">
+  <link rel="stylesheet" type="text/css" href="./css/index.css?v=<%=date_idx%>">
 </head>
 <body>
 <!-- 헤더,메뉴부분 -->

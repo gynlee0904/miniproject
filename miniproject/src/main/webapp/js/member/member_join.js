@@ -7,9 +7,10 @@ var phone = document.getElementById("phone");
 var m_agr = f.m_agr;
 var reg_eml = /^[a-zA-Z0-9_+-]+@[a-zA-Zㄱ-힣]+\.[a-zA-Z]{2,}$/;
 var reg_pw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_-])[a-zA-Z\d!@#$%^&*()_-]{10,16}$/; 
-var reg_nm = /^[가-힣a-zA-Z]+$/; 
+var reg_nm = /^[가-힣a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~ ]+$/; 
 var reg_pn = /^01\d{8,9}$/;
 var http, http2;  //ajax용 변수
+var reg_kakaoid = /^\d+$/;
 
 //약관동의내용 로드 
 window.onload=function(){
@@ -51,6 +52,11 @@ function ajax_idcheck(email){
 				f.m_email.readOnly = true; 
 				f.m_email.style.backgroundColor = "#ccc" 
 				eml_ckok.value="ok"	
+				document.getElementById("dp_btn").style.backgroundColor = "#ccc";  //버튼 안보이게 처리 
+				document.getElementById("dp_btn").style.border = "1px solid #ccc";
+				document.getElementById("dp_btn").style.cursor = "default";
+				document.getElementById("dp_btn").disabled = true;
+				
 			}else {
 				alert("해당 이메일은 이미 가입중입니다");
 				f.m_email.value = "";  //입력값 초기화 
@@ -99,7 +105,7 @@ function member_join(){
 		alert("이메일을 입력해주세요.");
 		email.focus();
 	}
-	else if(!reg_eml.test(email.value)){
+	else if(!reg_eml.test(email.value)){  //이메일 형식이 아닌 경우 
 		alert("이메일을 정확하게 입력해주세요.");
 		email.focus();
 	}
@@ -154,6 +160,25 @@ function member_join(){
         }
 	}
 }
+
+//카카오로그인을 위한 회원가입 
+var kakao_id = sessionStorage.getItem("mid");
+var kakao_nm = sessionStorage.getItem("mnick");
+//console.log(kakao_id)
+
+if(kakao_id != null){  //세션스토리지에 값이 있을때 
+	f.m_type.value="KAKAO";
+	f.kakao_id.value=kakao_id;
+	
+	pw.value=kakao_id+"a!";   //패스워드는 임의로 처리 
+	pw.readOnly = true;
+	pw.style.backgroundColor = "#f0f0f0";
+	
+	pw_ck.value=kakao_id+"a!";
+	pw_ck.readOnly = true;
+	pw_ck.style.backgroundColor = "#f0f0f0";
+}
+
 
 //폰번중복체크(ajax)
 function ajax_phncheck(phone){

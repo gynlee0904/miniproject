@@ -12,7 +12,7 @@
 			<a>이메일</a> 
 			<input type="text" placeholder=" 이메일 주소를 입력해주세요." autocomplete="none" style="width: 400px; float: left;" name="m_email" id="email"> 
 			<input type="hidden" id="eml_ckok" value="" >
-			<input type="button" value="중복체크" class="mail_btn" onclick="email_ck();">
+			<input type="button" value="중복체크" id="dp_btn" class="mail_btn" onclick="email_ck();">
 		</div>
 		<div>
 			<a>비밀번호</a> <input type="password" placeholder=" 10~16자(영문,숫자,특수 문자 조합)로 입력해주세요." autocomplete="none" name="m_pass">
@@ -63,6 +63,8 @@
 		<div>
 			<input type="button" value="가입 하기" onclick="member_join();">
 		</div>
+		<input type="hidden" name="m_type" value="WEB"> <!-- value="WEB" : 자회사 회원가입 , KAKAO : 카카오 -->
+		<input type="hidden" name="kakao_id" >
 	</form>
 </main>
 <script src="../js/member/member_join.js?v=<%=member_join%>"></script>

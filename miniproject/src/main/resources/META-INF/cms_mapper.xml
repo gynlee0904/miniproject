@@ -8,4 +8,15 @@
 </insert>
 
 
+
+<select id="rental_type" resultType="cms_dto">
+	select '공공임대' as category, count(*) as cnt from cms where rental_type like concat('%','공공임대','%') and complete = 'N'
+	union all
+	select '민간임대', count(*) as cnt from cms where rental_type like concat('%','민간임대','%') and complete = 'N'
+	union all
+	select '민간분양', count(*) as cnt from cms where rental_type like concat('%','민간분양','%') and complete = 'N'
+	union all
+	select '기타', count(*) as cnt from cms where rental_type like concat('%','기타','%') and complete = 'N'
+</select>
+
 </mapper>

@@ -45,13 +45,14 @@
 			
 			<div>
 			<c:if test="${adminck == 'adm'}">
-			<input type="button" value="수&nbsp;&nbsp;&nbsp;정" class="btns" onclick="">
-			<input type="button" value="삭&nbsp;&nbsp;&nbsp;제" class="btns" onclick="">
+			<input type="button" value="수&nbsp;&nbsp;&nbsp;정" class="btns" onclick="go_md_mdf('${md_one.midx}')">
+			<input type="button" value="삭&nbsp;&nbsp;&nbsp;제" class="btns" onclick="go_md_del('${md_one.midx}')">
 			</c:if>
 			</div>
 			
-			<input type="button" value="목&nbsp;&nbsp;&nbsp;록" class="btns" onclick="go_rcm_pd()">
+			<input type="button" value="목&nbsp;&nbsp;&nbsp;록" class="btns" onclick="mdchoice_list()">
 		</div>
 	</section>
 </main>
-<script src="../js/top.js?v=3"></script>
+<!-- <script src="../js/top.js?v=3"></script> -->
+<script src="../js/board/md_board.js?v=9"></script>

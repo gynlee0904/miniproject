@@ -59,8 +59,6 @@ public class cms_controller {
 								+ "location.href='../member/login.do';";
 			
 			m.addAttribute("msg", this.msg);
-			return "/common/alert_msg";
-			
 		}
 		else {  //로그인 되어있으면
 					
@@ -68,12 +66,11 @@ public class cms_controller {
 			if(this.result>0 ) {
 				this.msg="alert('담당자가 확인 후 해당 상담일시에 맞춰서 연락 드립니다.');"
 						+"location.href='../index.do';";
-				
 			}
 			m.addAttribute("msg",this.msg);
-			
-			return "/common/alert_msg";
 		}
+		
+		return "/common/alert_msg";
 	}
 	
 	

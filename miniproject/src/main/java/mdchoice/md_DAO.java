@@ -1,5 +1,6 @@
 package mdchoice;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import miniproject.m_paging;
 
@@ -17,8 +19,28 @@ public class md_DAO implements md_mapper {
 	
 	//게시글 총 개수
 	@Override
-	public int md_list_total() {
-		int result = this.st.selectOne("md_list_total");
+	public int md_list_total(String condition, String keyword) {
+		System.out.println("condition : "+condition);
+		Map<String, Object> info = new HashMap<String, Object>();
+		if(condition.equals("yester")) {
+			info.put("part", "yesterday");
+			
+		}else if(condition.equals("daily")) {
+			info.put("part", "today");
+			
+		}else if(condition.equals("lastweekly")) {
+			info.put("part", "lastweek");
+			
+		}else if(condition.equals("thisweekly")) {
+			info.put("part", "thisweek");
+			
+		}else if(condition.equals("search")) {
+			info.put("part", "search");
+			info.put("md_search", keyword);
+		}else {
+			info.put("part", "total");
+		}
+		int result = this.st.selectOne("md_list_total",info);
 		return result;
 	}
 	
@@ -65,10 +87,25 @@ public class md_DAO implements md_mapper {
 		return result;
 	}
 
-	//추천매물 게시글 총개수
+	//추천매물 검색게시글 총개수
+//	@Override
+//	public int md_slist_total(String keyword) {
+//		int result = this.st.selectOne("md_search_total", keyword);
+//		return result;
+//	}
+
+	
+	//추천매물 게시글 삭제
 	@Override
-	public int md_slist_total(String keyword) {
-		int result = this.st.selectOne("md_search_total", keyword);
+	public int md_board_delete(String midx) {
+		int result = this.st.delete("md_board_delete", midx);
+		return result;
+	}
+
+	//추천매물 게시글 수정
+	@Override
+	public int md_board_modify(md_DTO mdto) {
+		int result = this.st.update("md_modify", mdto);
 		return result;
 	}
 

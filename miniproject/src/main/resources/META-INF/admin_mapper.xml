@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.admin_mapper">
+
+
+<!-- 로그인 -->
+<select id="admin_login" resultType="adm_dto" parameterType="Map">
+	select aid, aname, admin_yn from admin_tbl where aid=#{aid} and apass=#{apass} and admin_yn='adms'
+</select>
+
+
+
+<!-- 날짜별 차트 쿼리문 -->
+<select id="dayCountList" resultType="crt_dto">
+select date(insert_date) as date, sum(case when src = 'md' then 1 else 0 end) as md_cnt, 
+sum(case when src = 'rv' then 1 else 0 end) as rv_cnt
+from ( 
+	select insert_date, 'md' as src from md_choice where insert_date >= curdate() - interval 1 month
+	union all
+	select insert_date, 'rv' from reservation_info where insert_date >= curdate() - interval 1 month
+) sub
+group by date(insert_date)
+order by date;
+</select>
+
+
+<!-- 푸터 -->
+
+</mapper>
