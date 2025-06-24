@@ -187,7 +187,7 @@ public class admin_controller {
 	
 	//날짜별 매물등록수, 방문예약수
 	@GetMapping("/admin/column_chart.do")
-	public String column_chart(HttpServletResponse res, md_DTO mdto, reservation_DTO rdto) throws IOException {
+	public String column_chart(HttpServletResponse res) throws IOException {
 		res.setContentType("text/html;charset=utf-8");
 		this.pw = res.getWriter();
 

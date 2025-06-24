@@ -11,7 +11,7 @@
 				<li>제&nbsp;&nbsp;&nbsp;목</li>
 				<li><input type="text" class="board_in2" name="md_title" id="md_title" value="${md_one.md_title}"></li>
 				<li>글쓴이</li>
-				<li><input type="text" class="board_in1"  value="관리자" readonly><span>&nbsp;&nbsp; 이전작성자 : ${md_one.md_writer}</span></li>
+				<li><input type="text" class="board_in1"  value="관리자" readonly></li>
 				<li>썸네일 이미지</li>
 				<li>
 				<span id="md_filenm">${md_one.md_filenm}</span>&nbsp;&nbsp;  
@@ -24,7 +24,7 @@
 					</textarea>
 				</li>
 				<li>최종 수정일</li>
-				<li>${md_one.modyfied_date}</li>
+				<li>${md_one.modyfied_date}<span>&nbsp;&nbsp; 이전작성자 : ${md_one.md_writer}</span></li>
 			</ul>
 			<input type="hidden" name="md_writer" id="md_writer" value="${aname}"> 
 		</div>

@@ -15,9 +15,12 @@
 select date(insert_date) as date, sum(case when src = 'md' then 1 else 0 end) as md_cnt, 
 sum(case when src = 'rv' then 1 else 0 end) as rv_cnt
 from ( 
-	select insert_date, 'md' as src from md_choice where insert_date >= curdate() - interval 1 month
+<!-- 	select insert_date, 'md' as src from md_choice where insert_date >= curdate() - interval 1 month -->
+<!-- 	union all -->
+<!-- 	select insert_date, 'rv' from reservation_info where insert_date >= curdate() - interval 1 month -->
+	select insert_date, 'md' as src from md_choice where insert_date &gt;= '2025-03-15' AND insert_date &lt;=  '2025-05-01'
 	union all
-	select insert_date, 'rv' from reservation_info where insert_date >= curdate() - interval 1 month
+	select insert_date, 'rv' from reservation_info where insert_date &gt;= '2025-03-150' AND insert_date &lt;= '2025-05-01'
 ) sub
 group by date(insert_date)
 order by date;
