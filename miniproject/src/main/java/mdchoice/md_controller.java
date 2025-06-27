@@ -97,10 +97,10 @@ public class md_controller  {
 
 			m.addAttribute("msg", this.msg);
 			this.url =  "/common/alert_msg";
-		
+			return this.url;
 		}
 
-		return this.url;
+		return null;
 	}
 	
 	//추천매물 게시글 상세보기
@@ -128,9 +128,9 @@ public class md_controller  {
 
 			m.addAttribute("msg", this.msg);
 			this.url =  "/common/alert_msg";
-			
+			return this.url;
 		}
-		return this.url;
+		return null;
 		
 	}
 	

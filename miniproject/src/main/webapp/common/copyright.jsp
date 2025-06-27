@@ -27,14 +27,14 @@
 				</ul>
 			</li>
 			<li>
-			<c:forEach var="web_info" items="${web_info}">
+			<c:forEach var="info" items="${web_info}">
 				<ul>
-					<li>${web_info.corp_name} | 대표 : ${web_info.corp_ceo}</li>
-					<li>${web_info.corp_addr}</li>
-					<li>사업자번호 : ${web_info.corp_bno} | 통신판매업 : ${web_info.corp_type}</li>
-					<li>정보보호책임자 : ${web_info.corp_manager}</li>
-					<li>영업문의 : ${web_info.corp_Inquiry}</li>
-					<li>팩스번호 : ${web_info.corp_fax}</li>
+					<li>${info.corp_name} | 대표 : ${info.corp_ceo}</li>
+					<li>${info.corp_addr}</li>
+					<li>사업자번호 : ${info.corp_bno} | 통신판매업 : ${info.corp_type}</li>
+					<li>정보보호책임자 : ${info.corp_manager}</li>
+					<li>영업문의 : ${info.corp_Inquiry}</li>
+					<li>팩스번호 : ${info.corp_fax}</li>
 				</ul>
 			</c:forEach>
 			</li>

@@ -115,6 +115,7 @@ public class reservation_controller {
 			
 			m.addAttribute("msg", this.msg);
 			this.url = "/common/alert_msg";
+			return this.url;
 			
 		}
 		else {  //로그인 되어있으면 해당 페이지로 이동	
@@ -127,7 +128,7 @@ public class reservation_controller {
 			m.addAttribute("list_total", list_total);
 			m.addAttribute("rsv_myList", rsv_myList);	
 		}
-		return this.url;
+		return null;
 	}
 	
 	

@@ -29,6 +29,24 @@ public class main_controller{
 	
 	
 	//메인페이지로 접속 
+	@GetMapping("/")
+	public String main(Model m){
+		
+		//weekinfo 전체리스트 출력 메소드
+		List<week_DTO> wk_allList = this.w_dao.wk_allList();
+		
+		//md_choice 전체 출력 메소드 
+		Integer post_ea = 4;
+		List<md_DTO> md_allList = this.m_dao.md_allList(1,post_ea);
+		
+		
+		m.addAttribute("wk_allList", wk_allList);
+		m.addAttribute("md_allList", md_allList);
+		
+		return "/index";
+	}
+	
+	
 	@GetMapping("/index.do")
 	public void index(Model m){
 		

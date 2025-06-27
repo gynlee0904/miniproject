@@ -187,8 +187,9 @@ public class member_controller{
 			this.msg="history.go(-1);";
 			m.addAttribute("msg",this.msg);
 			this.url="/common/alert_msg";
-		}	
-		return this.url;
+			return this.url;
+		}
+		return null;
 	}
 	
 	//아이디찾기 메소드 
@@ -211,9 +212,9 @@ public class member_controller{
 				m.addAttribute("memail",searchEmail);
 				this.url = "/WEB-INF/views/search_myinfo";
 			}
+			return this.url;
 		}
-		
-		return this.url;
+		return null;
 	}
 	
 	
@@ -227,8 +228,9 @@ public class member_controller{
 			this.msg="history.go(-1);";
 			m.addAttribute("msg",this.msg);
 			this.url="/common/alert_msg";
+			return this.url;
 		}	
-		return this.url;
+		return null;
 	}
 	
 	//비번찾기 메소드(가입한 회원이 있는지 확인) 
@@ -241,6 +243,7 @@ public class member_controller{
 					+ "location.href='./login.do';";
 			m.addAttribute("msg",this.msg);
 			this.url = "/common/alert_msg";
+			return this.url;
 			
 		}else {
 			int searchPw = this.m_dao.pw_search(m_dto); 
@@ -254,10 +257,12 @@ public class member_controller{
 				m.addAttribute("memail",m_dto.m_email);
 				m.addAttribute("mphone",m_dto.m_phone);
 				this.url = "/WEB-INF/views/search_mypass";
+				return this.url;
 			}
+			
 		}
 		
-		return this.url;
+		return null;
 	}
 	
 	

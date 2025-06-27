@@ -14,13 +14,15 @@ import miniproject.m_paging;
 
 @Repository("mdDAO")
 public class md_DAO implements md_mapper {
-	@Resource(name="template") public SqlSessionTemplate st;
-	@Resource(name="paging") public m_paging pg;
+	@Resource(name="template") 
+	public SqlSessionTemplate st;
+	
+	@Resource(name="paging") 
+	public m_paging pg;
 	
 	//게시글 총 개수
 	@Override
 	public int md_list_total(String condition, String keyword) {
-		System.out.println("condition : "+condition);
 		Map<String, Object> info = new HashMap<String, Object>();
 		if(condition.equals("yester")) {
 			info.put("part", "yesterday");
